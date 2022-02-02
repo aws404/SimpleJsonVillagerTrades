@@ -1,0 +1,25 @@
+{
+  "__COMMENT": "This will add a new trade to the farmer villager's offers (Note: 'replace': false), which will ask for 3 of a varying item (based of the villager type), in exchange for 1 emerald.",
+
+  "profession": "minecraft:farmer",
+  "replace": false,
+  "offers": {
+    "novice": [
+      {
+        "type": "minecraft:type_aware_buy_for_one_emerald",
+        "items": {
+          "minecraft:desert": "minecraft:cactus",
+          "minecraft:jungle": "minecraft:vine",
+          "minecraft:plains": "minecraft:grass",
+          "minecraft:savanna": "minecraft:dead_bush",
+          "minecraft:snow": "minecraft:spruce_sapling",
+          "minecraft:swamp": "minecraft:lily_pad",
+          "minecraft:taiga": "minecraft:fern"
+        },
+        "count": 3,
+        "max_uses": 10,
+        "experience": 2
+      }
+    ]
+  }
+}
