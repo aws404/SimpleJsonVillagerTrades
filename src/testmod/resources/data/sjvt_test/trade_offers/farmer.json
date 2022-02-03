@@ -20,6 +20,109 @@
         "max_uses": 10,
         "experience": 2
       }
+    ],
+    "apprentice": [
+      {
+        "type": "sjvt:type_aware_sell_item_for_items",
+        "buy_1": {
+          "minecraft:desert": {
+            "id": "minecraft:cactus",
+            "Count": 1
+          },
+          "minecraft:jungle": {
+            "id": "minecraft:vine",
+            "Count": 1
+          },
+          "minecraft:plains": {
+            "id": "minecraft:grass",
+            "Count": 1
+          },
+          "minecraft:savanna": {
+            "id": "minecraft:dead_bush",
+            "Count": 1
+          },
+          "minecraft:snow": {
+            "id": "minecraft:spruce_sapling",
+            "Count": 1
+          },
+          "minecraft:swamp": {
+            "id": "minecraft:lily_pad",
+            "Count": 1
+          },
+          "minecraft:taiga": {
+            "id": "minecraft:fern",
+            "Count": 1
+          }
+        },
+        "sell": {
+          "minecraft:desert": {
+            "id": "minecraft:cactus",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Desert Cactus\"}"
+              }
+            }
+          },
+          "minecraft:jungle": {
+            "id": "minecraft:vine",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Jungle Vines\"}"
+              }
+            }
+          },
+          "minecraft:plains": {
+            "id": "minecraft:grass",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Plains Grass\"}"
+              }
+            }
+          },
+          "minecraft:savanna": {
+            "id": "minecraft:dead_bush",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Savanna Bush\"}"
+              }
+            }
+          },
+          "minecraft:snow": {
+            "id": "minecraft:spruce_sapling",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Snowy Sapling\"}"
+              }
+            }
+          },
+          "minecraft:swamp": {
+            "id": "minecraft:lily_pad",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Swampy Lily Pad\"}"
+              }
+            }
+          },
+          "minecraft:taiga": {
+            "id": "minecraft:fern",
+            "Count": 1,
+            "tag": {
+              "display": {
+                "Name": "{\"text\":\"Taiga Fern\"}"
+              }
+            }
+          }
+        },
+        "count": 3,
+        "max_uses": 10,
+        "experience": 2
+      }
     ]
   }
 }

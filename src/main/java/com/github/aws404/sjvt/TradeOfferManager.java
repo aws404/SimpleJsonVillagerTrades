@@ -1,6 +1,7 @@
-package com.github.aws404.sjvt.trade_offers;
+package com.github.aws404.sjvt;
 
-import com.github.aws404.sjvt.SimpleJsonVillagerTradesMod;
+import com.github.aws404.sjvt.trade_offers.TradeOfferFactory;
+import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -9,7 +10,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.entity.EntityType;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -26,7 +26,7 @@ import java.util.stream.StreamSupport;
 public class TradeOfferManager extends JsonDataLoader implements IdentifiableResourceReloadListener {
 
     private static final Identifier ID = SimpleJsonVillagerTradesMod.id("trade_offers");
-    private static final Gson GSON = TradeOfferFactorySerialiser.getTradeOffersGsonBuilder().create();
+    private static final Gson GSON = TradeOfferFactoryType.getTradeOffersGsonBuilder().create();
     private static final Identifier WANDERING_TRADER_PROFESSION_ID = Registry.ENTITY_TYPE.getId(EntityType.WANDERING_TRADER);
 
     private Map<Identifier, Int2ObjectMap<TradeOffers.Factory[]>> offerFactories = Map.of();
@@ -71,7 +71,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
 
             offersObject.keySet().forEach(s -> {
                 MerchantLevel key = MerchantLevel.valueOf(s.toUpperCase());
-                List<TradeOffers.Factory> offers = StreamSupport.stream(JsonHelper.getArray(offersObject, s).spliterator(), false).map(jsonElement1 -> (TradeOffers.Factory) GSON.fromJson(jsonElement1, TradeOfferFactorySerialiser.TradeOfferFactory.class)).toList();
+                List<TradeOffers.Factory> offers = StreamSupport.stream(JsonHelper.getArray(offersObject, s).spliterator(), false).map(jsonElement1 -> (TradeOffers.Factory) GSON.fromJson(jsonElement1, TradeOfferFactory.class)).toList();
                 builderMap.get(profession).putIfAbsent(key.id, new ArrayList<>());
                 builderMap.get(profession).get(key.id).addAll(offers);
             });

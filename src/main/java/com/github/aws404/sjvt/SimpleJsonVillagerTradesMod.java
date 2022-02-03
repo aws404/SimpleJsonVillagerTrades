@@ -1,9 +1,7 @@
 package com.github.aws404.sjvt;
 
-import com.github.aws404.sjvt.trade_offers.TradeOfferManager;
 import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceType;

@@ -17,7 +17,7 @@
         },
         "sell": "minecraft:netherite_ingot",
         "max_uses": 10,
-        "experience": 2
+        "experience": 20
       }
     ]
   }

@@ -1,7 +1,7 @@
 package com.github.aws404.sjvt.mixin;
 
 import com.github.aws404.sjvt.SimpleJsonVillagerTradesMod;
-import com.github.aws404.sjvt.trade_offers.TradeOfferManager;
+import com.github.aws404.sjvt.TradeOfferManager;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
