@@ -20,6 +20,7 @@
       "com.github.aws404.sjvt.SimpleJsonVillagerTradesMod"
     ]
   },
+  "accessWidener": "sjvt.accesswidener",
   "mixins": [
     "sjvt.mixins.json"
   ],
