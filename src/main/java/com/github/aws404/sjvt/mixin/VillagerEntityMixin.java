@@ -33,7 +33,7 @@ public abstract class VillagerEntityMixin extends MerchantEntity {
             return;
         }
 
-        Optional<Int2ObjectMap<TradeOffers.Factory[]>> jsonTradeOffer = SimpleJsonVillagerTradesMod.TRADE_OFFER_MANAGER.getOffers(this.getVillagerData().getProfession());
+        Optional<Int2ObjectMap<TradeOffers.Factory[]>> jsonTradeOffer = SimpleJsonVillagerTradesMod.TRADE_OFFER_MANAGER.getVillagerOffers(this.getVillagerData().getProfession());
         if (jsonTradeOffer.isPresent()) {
             Int2ObjectMap<TradeOffers.Factory[]> int2ObjectMap = jsonTradeOffer.get();
             if (!int2ObjectMap.isEmpty()) {
@@ -46,6 +46,6 @@ public abstract class VillagerEntityMixin extends MerchantEntity {
             ci.cancel();
             return;
         }
-        SimpleJsonVillagerTradesMod.LOGGER.error("Could not find JSON trades for the Villager profession {}, using default behavour.", this.getVillagerData().getProfession().getId());
+        SimpleJsonVillagerTradesMod.LOGGER.error("Could not find JSON trade offers for the Villager profession {}, using default behaviour.", this.getVillagerData().getProfession().getId());
     }
 }

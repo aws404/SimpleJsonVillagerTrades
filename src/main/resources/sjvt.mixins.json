@@ -4,6 +4,17 @@
   "package": "com.github.aws404.sjvt.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "TradeOffersAccessor",
+    "TradeOffersAccessor$BuyForOneEmeraldFactoryAccessor",
+    "TradeOffersAccessor$EnchantBookFactoryAccessor",
+    "TradeOffersAccessor$ProcessItemFactoryAccessor",
+    "TradeOffersAccessor$SellDyedArmorFactoryAccessor",
+    "TradeOffersAccessor$SellEnchantedToolFactoryAccessor",
+    "TradeOffersAccessor$SellItemFactoryAccessor",
+    "TradeOffersAccessor$SellMapFactoryAccessor",
+    "TradeOffersAccessor$SellPotionHoldingItemFactoryAccessor",
+    "TradeOffersAccessor$SellSuspiciousStewFactoryAccessor",
+    "TradeOffersAccessor$TypeAwareBuyForOneEmeraldFactoryAccessor",
     "VillagerEntityMixin",
     "WanderingTraderEntityMixin"
   ],

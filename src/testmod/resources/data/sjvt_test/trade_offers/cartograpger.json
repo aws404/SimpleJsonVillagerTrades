@@ -1,0 +1,18 @@
+{
+  "__COMMENT": "This adds an Igloo map to the Cartographer's trades.",
+
+  "profession": "minecraft:cartographer",
+  "replace": false,
+  "offers": {
+    "apprentice": [
+      {
+        "type": "minecraft:sell_map",
+        "price": 5,
+        "feature": "minecraft:igloo",
+        "icon": "target_x",
+        "max_uses": 10,
+        "experience": 2
+      }
+    ]
+  }
+}
