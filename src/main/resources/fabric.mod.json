@@ -9,7 +9,8 @@
     "aws404"
   ],
   "contact": {
-    "sources": "https://github.com/aws404/SimpleJsonVillagerTrades"
+    "sources": "https://github.com/aws404/SimpleJsonVillagerTrades",
+    "issues": "https://github.com/aws404/SimpleJsonVillagerTrades/issues"
   },
 
   "license": "CC0-1.0",
