@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
@@ -37,45 +38,36 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
 
     @Override
     protected void apply(Map<Identifier, JsonElement> prepared, ResourceManager manager, Profiler profiler) {
-        HashMap<Identifier, Int2ObjectMap<List<TradeOffers.Factory>>> builderMap = new HashMap<>();
-
-        AtomicInteger loadedCount = new AtomicInteger();
+        Map<Identifier, Int2ObjectMap<List<TradeOffers.Factory>>> builderMap = new HashMap<>();
 
         // Firstly, add the hardcoded trades to the new map
-        TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> {
-            Identifier id = new Identifier(profession.getId());
-            builderMap.putIfAbsent(id, new Int2ObjectOpenHashMap<>());
-            int2ObjectMap.forEach((integer, factories) -> {
-                builderMap.get(id).putIfAbsent(integer, new ArrayList<>());
-                builderMap.get(id).get((int) integer).addAll(List.of(factories));
-            });
-        });
-
-        builderMap.putIfAbsent(WANDERING_TRADER_PROFESSION_ID, new Int2ObjectOpenHashMap<>());
-        builderMap.get(WANDERING_TRADER_PROFESSION_ID).putIfAbsent(MerchantLevel.COMMON.id, new ArrayList<>());
-        builderMap.get(WANDERING_TRADER_PROFESSION_ID).putIfAbsent(MerchantLevel.RARE.id, new ArrayList<>());
-        TradeOffers.WANDERING_TRADER_TRADES.forEach((integer, factories) -> builderMap.get(WANDERING_TRADER_PROFESSION_ID).get((int) integer).addAll(List.of(factories)));
+        loadVanillaTradesIntoMap(builderMap);
 
         // Secondly, parse and add the JSON data
+        AtomicInteger loadedCount = new AtomicInteger();
         prepared.forEach((identifier, jsonElement) -> {
-            JsonObject topObject = JsonHelper.asObject(jsonElement, "top level");
-            Identifier profession = new Identifier(JsonHelper.getString(topObject, "profession"));
-            boolean replace = JsonHelper.getBoolean(topObject, "replace", false);
-            JsonObject offersObject = JsonHelper.getObject(topObject, "offers");
+            try {
+                JsonObject topObject = JsonHelper.asObject(jsonElement, "top level");
+                Identifier profession = new Identifier(JsonHelper.getString(topObject, "profession"));
+                boolean replace = JsonHelper.getBoolean(topObject, "replace", false);
+                JsonObject offersObject = JsonHelper.getObject(topObject, "offers");
 
-            if (replace) {
-                builderMap.put(profession, new Int2ObjectOpenHashMap<>());
-            } else {
-                builderMap.putIfAbsent(profession, new Int2ObjectOpenHashMap<>());
+                if (replace) {
+                    builderMap.put(profession, new Int2ObjectOpenHashMap<>());
+                } else {
+                    builderMap.putIfAbsent(profession, new Int2ObjectOpenHashMap<>());
+                }
+
+                offersObject.keySet().forEach(s -> {
+                    MerchantLevel key = MerchantLevel.valueOf(s.toUpperCase());
+                    List<TradeOffers.Factory> offers = StreamSupport.stream(JsonHelper.getArray(offersObject, s).spliterator(), false).map(element -> (TradeOffers.Factory) GSON.fromJson(JsonHelper.asObject(element, s + "[?]"), TradeOfferFactory.class)).toList();
+                    builderMap.get(profession).putIfAbsent(key.id, new ArrayList<>());
+                    builderMap.get(profession).get(key.id).addAll(offers);
+                });
+                loadedCount.incrementAndGet();
+            } catch (JsonParseException e) {
+                SimpleJsonVillagerTradesMod.LOGGER.error("Couldn't parse trade offer {}", identifier, e);
             }
-
-            offersObject.keySet().forEach(s -> {
-                MerchantLevel key = MerchantLevel.valueOf(s.toUpperCase());
-                List<TradeOffers.Factory> offers = StreamSupport.stream(JsonHelper.getArray(offersObject, s).spliterator(), false).map(jsonElement1 -> (TradeOffers.Factory) GSON.fromJson(jsonElement1, TradeOfferFactory.class)).toList();
-                builderMap.get(profession).putIfAbsent(key.id, new ArrayList<>());
-                builderMap.get(profession).get(key.id).addAll(offers);
-            });
-            loadedCount.incrementAndGet();
         });
 
         ImmutableMap.Builder<Identifier, Int2ObjectMap<TradeOffers.Factory[]>> builder = ImmutableMap.builder();
@@ -96,6 +88,22 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
 
     public Optional<TradeOffers.Factory[]> getWanderingTraderOffers(MerchantLevel rarity) {
         return Optional.ofNullable(offerFactories.get(WANDERING_TRADER_PROFESSION_ID).get(rarity.id));
+    }
+
+    public static void loadVanillaTradesIntoMap(Map<Identifier, Int2ObjectMap<List<TradeOffers.Factory>>> builderMap) {
+        TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> {
+            Identifier id = new Identifier(profession.getId());
+            builderMap.putIfAbsent(id, new Int2ObjectOpenHashMap<>());
+            int2ObjectMap.forEach((integer, factories) -> {
+                builderMap.get(id).putIfAbsent(integer, new ArrayList<>());
+                builderMap.get(id).get((int) integer).addAll(List.of(factories));
+            });
+        });
+
+        builderMap.putIfAbsent(WANDERING_TRADER_PROFESSION_ID, new Int2ObjectOpenHashMap<>());
+        builderMap.get(WANDERING_TRADER_PROFESSION_ID).putIfAbsent(MerchantLevel.COMMON.id, new ArrayList<>());
+        builderMap.get(WANDERING_TRADER_PROFESSION_ID).putIfAbsent(MerchantLevel.RARE.id, new ArrayList<>());
+        TradeOffers.WANDERING_TRADER_TRADES.forEach((integer, factories) -> builderMap.get(WANDERING_TRADER_PROFESSION_ID).get((int) integer).addAll(List.of(factories)));
     }
 
     @Override

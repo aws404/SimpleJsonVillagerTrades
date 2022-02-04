@@ -69,9 +69,9 @@ public class TypeAwareSellItemForItemsOfferFactory implements TradeOfferFactory 
 
         @Override
         public TypeAwareSellItemForItemsOfferFactory fromJson(JsonObject json, JsonDeserializationContext context) {
-            Map<VillagerType, ItemStack> buyMap1 = SJVTJsonHelpers.getVillagerTypeMap(json, "buy_1", jsonElement -> SJVTJsonHelpers.asItemStack(jsonElement, "VillagerType$ItemStack"));
-            Map<VillagerType, ItemStack> buyMap2 = SJVTJsonHelpers.getVillagerTypeMap(json, "buy_2", null, jsonElement -> SJVTJsonHelpers.asItemStack(jsonElement, "VillagerType$ItemStack"));
-            Map<VillagerType, ItemStack> sellMap = SJVTJsonHelpers.getVillagerTypeMap(json, "sell", jsonElement -> SJVTJsonHelpers.asItemStack(jsonElement, "VillagerType$ItemStack"));
+            Map<VillagerType, ItemStack> buyMap1 = SJVTJsonHelpers.getVillagerTypeMap(json, "buy_1", SJVTJsonHelpers::asItemStack);
+            Map<VillagerType, ItemStack> buyMap2 = SJVTJsonHelpers.getVillagerTypeMap(json, "buy_2", null, SJVTJsonHelpers::asItemStack);
+            Map<VillagerType, ItemStack> sellMap = SJVTJsonHelpers.getVillagerTypeMap(json, "sell",  SJVTJsonHelpers::asItemStack);
             int maxUses = JsonHelper.getInt(json, "max_uses", 12);
             int experience = JsonHelper.getInt(json, "experience", 2);
             return new TypeAwareSellItemForItemsOfferFactory(buyMap1, buyMap2, sellMap, maxUses, experience);

@@ -14,6 +14,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.village.VillagerType;
 
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -47,10 +48,10 @@ public class SJVTJsonHelpers {
         return JsonHelper.deserialize(stack.writeNbt(new NbtCompound()).toString());
     }
 
-    public static <T> Map<VillagerType, T> getVillagerTypeMap(JsonObject object, String name, Map<VillagerType, T> defaultMap, Function<JsonElement, T> mapper) {
+    public static <T> Map<VillagerType, T> getVillagerTypeMap(JsonObject object, String name, Map<VillagerType, T> defaultMap, BiFunction<JsonElement, String, T> mapper) {
         if (object.has(name)) {
             if (object.get(name).isJsonObject()) {
-                return asVillagerTypeMap(object.get(name).getAsJsonObject(), mapper);
+                return asVillagerTypeMap(object.get(name).getAsJsonObject(), name, mapper);
             } else {
                 throw new JsonSyntaxException("Expected " + name + " to be a villager type map, was " + JsonHelper.getType(object));
             }
@@ -59,10 +60,10 @@ public class SJVTJsonHelpers {
         }
     }
 
-    public static <T> Map<VillagerType, T> getVillagerTypeMap(JsonObject object, String name, Function<JsonElement, T> mapper) {
+    public static <T> Map<VillagerType, T> getVillagerTypeMap(JsonObject object, String name, BiFunction<JsonElement, String, T> mapper) {
         if (object.has(name)) {
             if (object.get(name).isJsonObject()) {
-                return asVillagerTypeMap(object.get(name).getAsJsonObject(), mapper);
+                return asVillagerTypeMap(object.get(name).getAsJsonObject(), name, mapper);
             } else {
                 throw new JsonSyntaxException("Expected " + name + " to be a villager type map, was " + JsonHelper.getType(object));
             }
@@ -71,8 +72,15 @@ public class SJVTJsonHelpers {
         }
     }
 
-    public static <T> Map<VillagerType, T> asVillagerTypeMap(JsonObject object, Function<JsonElement, T> mapper) {
-        return object.entrySet().stream().map(entry -> new Pair<>(Registry.VILLAGER_TYPE.get(new Identifier((entry.getKey()))), mapper.apply(entry.getValue()))).collect(Collectors.toMap(Pair::getLeft, Pair::getRight));
+    public static <T> Map<VillagerType, T> asVillagerTypeMap(JsonObject object, String element, BiFunction<JsonElement, String, T> mapper) {
+        T defaultObject = object.has("default") ? mapper.apply(object.get("default"), element + "$default") : null;
+        return Registry.VILLAGER_TYPE.stream().map(villagerType -> {
+            Identifier id = Registry.VILLAGER_TYPE.getId(villagerType);
+            if (defaultObject == null && !object.has(id.toString())) {
+                throw new JsonSyntaxException("Missing villager type " + id + " and no default provided in map " + element);
+            }
+            return new Pair<>(villagerType, object.has(id.toString()) ? mapper.apply(object.get(id.toString()), element + "$" + id) : defaultObject);
+        }).collect(Collectors.toMap(Pair::getLeft, Pair::getRight));
     }
 
     public static <T> JsonObject villagerTypeMapToJson(Map<VillagerType, T> map, Function<T, JsonElement> mapper) {

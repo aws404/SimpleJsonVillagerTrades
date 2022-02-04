@@ -46,7 +46,7 @@ public class VanillaTradeOfferFactories {
             @Override
             public BuyForOneEmeraldFactory fromJson(JsonObject json, JsonDeserializationContext context) {
                 Item item = JsonHelper.getItem(json, "item");
-                int price = JsonHelper.getInt(json, "price");
+                int price = JsonHelper.getInt(json, "price", 1);
                 int maxUses = JsonHelper.getInt(json, "max_uses", 12);
                 int experience = JsonHelper.getInt(json, "experience", 2);
                 return new BuyForOneEmeraldFactory(item, price, maxUses, experience);
@@ -80,7 +80,7 @@ public class VanillaTradeOfferFactories {
             public SellItemFactory fromJson(JsonObject json, JsonDeserializationContext context) {
                 Item item = JsonHelper.getItem(json, "item");
                 int count = JsonHelper.getInt(json, "count", 1);
-                int price = JsonHelper.getInt(json, "price");
+                int price = JsonHelper.getInt(json, "price", 1);
                 int maxUses = JsonHelper.getInt(json, "max_uses", 12);
                 int experience = JsonHelper.getInt(json, "experience", 2);
                 return new SellItemFactory(item, count, price, maxUses, experience);
@@ -146,7 +146,7 @@ public class VanillaTradeOfferFactories {
             public ProcessItemFactory fromJson(JsonObject json, JsonDeserializationContext context) {
                 Item item = JsonHelper.getItem(json, "item");
                 int secondCount = JsonHelper.getInt(json, "second_count", 1);
-                int price = JsonHelper.getInt(json, "price");
+                int price = JsonHelper.getInt(json, "price", 1);
                 Item sellItem = JsonHelper.getItem(json, "sell_item");
                 int sellCount = JsonHelper.getInt(json, "sell_count", 1);
                 int maxUses = JsonHelper.getInt(json, "max_uses", 12);
@@ -216,7 +216,7 @@ public class VanillaTradeOfferFactories {
                 int count = JsonHelper.getInt(json, "count", 1);
                 int maxUses = JsonHelper.getInt(json, "max_uses", 12);
                 int experience = JsonHelper.getInt(json, "experience", 2);
-                Map<VillagerType, Item> map = SJVTJsonHelpers.getVillagerTypeMap(json, "items", jsonElement -> JsonHelper.asItem(jsonElement, "VillagerType$item"));
+                Map<VillagerType, Item> map = SJVTJsonHelpers.getVillagerTypeMap(json, "items", JsonHelper::asItem);
                 return new TypeAwareBuyForOneEmeraldFactory(count, maxUses, experience, map);
             }
         }
@@ -311,7 +311,7 @@ public class VanillaTradeOfferFactories {
             @Override
             public SellMapFactory fromJson(JsonObject json, JsonDeserializationContext context) {
                 int price = JsonHelper.getInt(json, "price", 1);
-                StructureFeature<?> feature = Registry.STRUCTURE_FEATURE.get(new Identifier(JsonHelper.getString(json, "feature")));
+                StructureFeature<?> feature = Registry.STRUCTURE_FEATURE.getOrEmpty(new Identifier(JsonHelper.getString(json, "feature"))).orElse(StructureFeature.MANSION);
                 MapIcon.Type icon = MapIcon.Type.valueOf(JsonHelper.getString(json, "icon", "RED_X").toUpperCase());
                 int maxUses = JsonHelper.getInt(json, "max_uses", 12);
                 int experience = JsonHelper.getInt(json, "experience", 2);
