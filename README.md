@@ -31,7 +31,7 @@ You can include the mod using the following dependency in your `build.gradle` (w
 ```gradle
 dependencies {
   modImplementation include("com.github.aws404:sjvt:[TAG]")
- }
+}
 ```
 Then see 'For Datapackers'
 
