@@ -27,12 +27,17 @@ For example:
 For more tutorials and more information on modifying merchant trades, see [the wiki](https://github.com/aws404/SimpleJsonVillagerTrades/wiki).
 
 ## For Mod Developers
-You can include the mod using the following dependency in your `build.gradle` (where `[TAG]` is the latest version):
+You can include the mod using the following repository and dependency in your `build.gradle` (where `[TAG]` is the latest version):
 ```gradle
+repositories {
+	maven { url 'https://raw.github.com/aws404/maven/main' }
+}
+
 dependencies {
   modImplementation include("com.github.aws404:sjvt:[TAG]")
 }
 ```
+
 Then see 'For Datapackers'
 
 ## Compatibility
