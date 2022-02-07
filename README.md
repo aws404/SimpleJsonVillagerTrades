@@ -30,7 +30,7 @@ For more tutorials and more information on modifying merchant trades, see [the w
 You can include the mod using the following repository and dependency in your `build.gradle` (where `[TAG]` is the latest version):
 ```gradle
 repositories {
-	maven { url 'https://raw.github.com/aws404/maven/main' }
+  maven { url 'https://raw.github.com/aws404/maven/main' }
 }
 
 dependencies {
