@@ -34,7 +34,8 @@ repositories {
 }
 
 dependencies {
-  modImplementation include("com.github.aws404:sjvt:[TAG]")
+  modImplementation include("com.github.aws404:sjvt:[TAG]") //To include (jij) in your mod
+  modImplementation "com.github.aws404:sjvt:[TAG]" // To require the mod to be installed seperatly
 }
 ```
 
