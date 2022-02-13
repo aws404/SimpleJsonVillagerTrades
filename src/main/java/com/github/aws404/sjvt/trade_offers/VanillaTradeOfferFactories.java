@@ -83,7 +83,7 @@ public class VanillaTradeOfferFactories {
                 int price = JsonHelper.getInt(json, "price", 1);
                 int maxUses = JsonHelper.getInt(json, "max_uses", 12);
                 int experience = JsonHelper.getInt(json, "experience", 2);
-                return new SellItemFactory(item, count, price, maxUses, experience);
+                return new SellItemFactory(item, price, count, maxUses, experience);
             }
         }
     }
