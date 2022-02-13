@@ -27,12 +27,24 @@ For example:
 For more tutorials and more information on modifying merchant trades, see [the wiki](https://github.com/aws404/SimpleJsonVillagerTrades/wiki).
 
 ## For Mod Developers
-You can include the mod using the following dependency in your `build.gradle` (where `[TAG]` is the latest version):
+You can include the mod using the following repository and dependency in your `build.gradle` (where `[TAG]` is the latest version):
 ```gradle
+repositories {
+  maven {
+    name = "Modrinth"
+    url = "https://api.modrinth.com/maven"
+    content {
+      includeGroup "maven.modrinth"
+    }
+  }
+}
+
 dependencies {
-  modImplementation include("com.github.aws404:sjvt:[TAG]")
+  modImplementation include("maven.modrinth:sjvt:[TAG]") //To include (jij) in your mod
+  modImplementation "maven.modrinth:sjvt:[TAG]" // To require the mod to be installed seperatly
 }
 ```
+
 Then see 'For Datapackers'
 
 ## Compatibility
