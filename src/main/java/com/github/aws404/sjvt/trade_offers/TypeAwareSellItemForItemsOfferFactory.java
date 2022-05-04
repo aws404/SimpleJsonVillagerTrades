@@ -1,13 +1,11 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.SJVTJsonHelpers;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.JsonHelper;
-import net.minecraft.util.JsonSerializer;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerDataContainer;
@@ -15,9 +13,18 @@ import net.minecraft.village.VillagerType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
-public class TypeAwareSellItemForItemsOfferFactory implements TradeOfferFactory {
+public class TypeAwareSellItemForItemsOfferFactory implements SerializableTradeOfferFactory<TypeAwareSellItemForItemsOfferFactory> {
+
+    public static final Codec<TypeAwareSellItemForItemsOfferFactory> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            CodecHelper.villagerTypeMap(CodecHelper.SIMPLE_ITEM_STACK_CODEC).fieldOf("buy_1").forGetter(typeAwareSellItemForItemsOfferFactory -> typeAwareSellItemForItemsOfferFactory.buyMap1),
+            CodecHelper.villagerTypeMap(CodecHelper.SIMPLE_ITEM_STACK_CODEC).optionalFieldOf("buy_2").forGetter(typeAwareSellItemForItemsOfferFactory -> Optional.ofNullable(typeAwareSellItemForItemsOfferFactory.buyMap2)),
+            CodecHelper.villagerTypeMap(CodecHelper.SIMPLE_ITEM_STACK_CODEC).fieldOf("sell").forGetter(typeAwareSellItemForItemsOfferFactory -> typeAwareSellItemForItemsOfferFactory.sellMap),
+            Codec.INT.optionalFieldOf("max_uses", 12).forGetter(factory -> factory.maxUses),
+            Codec.INT.optionalFieldOf("experience", 2).forGetter(factory -> factory.experience)
+    ).apply(instance, TypeAwareSellItemForItemsOfferFactory::new));
 
     public final Map<VillagerType, ItemStack> buyMap1;
     public final Map<VillagerType, ItemStack> buyMap2;
@@ -25,22 +32,17 @@ public class TypeAwareSellItemForItemsOfferFactory implements TradeOfferFactory 
     public final int maxUses;
     public final int experience;
 
-    public TypeAwareSellItemForItemsOfferFactory(Map<VillagerType, ItemStack> buyMap1, Map<VillagerType, ItemStack> buyMap2, Map<VillagerType, ItemStack> sellMap, int maxUses, int experience) {
-        Registry.VILLAGER_TYPE.stream().filter((villagerType) -> !buyMap1.containsKey(villagerType) || (buyMap2 != null && !buyMap2.containsKey(villagerType)) || !sellMap.containsKey(villagerType)).findAny().ifPresent((villagerType) -> {
+    public TypeAwareSellItemForItemsOfferFactory(Map<VillagerType, ItemStack> buyMap1, Optional<Map<VillagerType, ItemStack>> buyMap2, Map<VillagerType, ItemStack> sellMap, int maxUses, int experience) {
+        Registry.VILLAGER_TYPE.stream().filter((villagerType) -> !buyMap1.containsKey(villagerType) || (buyMap2.isPresent() && !buyMap2.get().containsKey(villagerType)) || !sellMap.containsKey(villagerType)).findAny().ifPresent((villagerType) -> {
             throw new IllegalStateException("Missing trade for villager type: " + Registry.VILLAGER_TYPE.getId(villagerType));
         });
         this.buyMap1 = buyMap1;
-        this.buyMap2 = buyMap2;
+        this.buyMap2 = buyMap2.orElse(null);
         this.sellMap = sellMap;
         this.maxUses = maxUses;
         this.experience = experience;
     }
-
-    @Override
-    public TradeOfferFactoryType getType() {
-        return TradeOfferFactoryType.TYPE_AWARE_SELL_ITEM_FOR_ITEMS;
-    }
-
+    
     @Nullable
     @Override
     public TradeOffer create(Entity entity, Random random) {
@@ -54,27 +56,8 @@ public class TypeAwareSellItemForItemsOfferFactory implements TradeOfferFactory 
         }
     }
 
-    public static class Serialiser implements JsonSerializer<TypeAwareSellItemForItemsOfferFactory> {
-
-        @Override
-        public void toJson(JsonObject json, TypeAwareSellItemForItemsOfferFactory object, JsonSerializationContext context) {
-            json.add("buy_1", SJVTJsonHelpers.villagerTypeMapToJson(object.buyMap1, SJVTJsonHelpers::itemStackToJson));
-            if (object.buyMap2 != null) {
-                json.add("buy_2", SJVTJsonHelpers.villagerTypeMapToJson(object.buyMap2, SJVTJsonHelpers::itemStackToJson));
-            }
-            json.add("sell", SJVTJsonHelpers.villagerTypeMapToJson(object.sellMap, SJVTJsonHelpers::itemStackToJson));
-            json.addProperty("max_uses", object.maxUses);
-            json.addProperty("experience", object.experience);
-        }
-
-        @Override
-        public TypeAwareSellItemForItemsOfferFactory fromJson(JsonObject json, JsonDeserializationContext context) {
-            Map<VillagerType, ItemStack> buyMap1 = SJVTJsonHelpers.getVillagerTypeMap(json, "buy_1", SJVTJsonHelpers::asItemStack);
-            Map<VillagerType, ItemStack> buyMap2 = SJVTJsonHelpers.getVillagerTypeMap(json, "buy_2", null, SJVTJsonHelpers::asItemStack);
-            Map<VillagerType, ItemStack> sellMap = SJVTJsonHelpers.getVillagerTypeMap(json, "sell",  SJVTJsonHelpers::asItemStack);
-            int maxUses = JsonHelper.getInt(json, "max_uses", 12);
-            int experience = JsonHelper.getInt(json, "experience", 2);
-            return new TypeAwareSellItemForItemsOfferFactory(buyMap1, buyMap2, sellMap, maxUses, experience);
-        }
+    @Override
+    public Codec<TypeAwareSellItemForItemsOfferFactory> getCodec() {
+        return CODEC;
     }
 }

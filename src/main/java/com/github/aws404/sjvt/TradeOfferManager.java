@@ -1,12 +1,16 @@
 package com.github.aws404.sjvt;
 
-import com.github.aws404.sjvt.trade_offers.TradeOfferFactory;
-import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
+import com.github.aws404.sjvt.api.TradeOfferFactories;
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.api.RegistryWithOptionsCodec;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
@@ -14,7 +18,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
 import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffers;
@@ -22,13 +25,12 @@ import net.minecraft.village.VillagerProfession;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.StreamSupport;
 
 public class TradeOfferManager extends JsonDataLoader implements IdentifiableResourceReloadListener {
 
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    public static final Identifier WANDERING_TRADER_PROFESSION_ID = Registry.ENTITY_TYPE.getId(EntityType.WANDERING_TRADER);
     private static final Identifier ID = SimpleJsonVillagerTradesMod.id("trade_offers");
-    private static final Gson GSON = TradeOfferFactoryType.getTradeOffersGsonBuilder().create();
-    private static final Identifier WANDERING_TRADER_PROFESSION_ID = Registry.ENTITY_TYPE.getId(EntityType.WANDERING_TRADER);
 
     private Map<Identifier, Int2ObjectMap<TradeOffers.Factory[]>> offerFactories = Map.of();
 
@@ -40,44 +42,30 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
     protected void apply(Map<Identifier, JsonElement> prepared, ResourceManager manager, Profiler profiler) {
         Map<Identifier, Int2ObjectMap<List<TradeOffers.Factory>>> builderMap = new HashMap<>();
 
-        // Firstly, add the hardcoded trades to the new map
         loadVanillaTradesIntoMap(builderMap);
 
-        // Secondly, parse and add the JSON data
         AtomicInteger loadedCount = new AtomicInteger();
         prepared.forEach((identifier, jsonElement) -> {
             try {
-                JsonObject topObject = JsonHelper.asObject(jsonElement, "top level");
-                Identifier profession = new Identifier(JsonHelper.getString(topObject, "profession"));
-                boolean replace = JsonHelper.getBoolean(topObject, "replace", false);
-                JsonObject offersObject = JsonHelper.getObject(topObject, "offers");
-
-                if (replace) {
-                    builderMap.put(profession, new Int2ObjectOpenHashMap<>());
+                VillagerTrades trades = VillagerTrades.CODEC.decode(JsonOps.INSTANCE, jsonElement).getOrThrow(false, s -> SimpleJsonVillagerTradesMod.LOGGER.error("Failed to read file {}", identifier.toString())).getFirst();
+                if (trades.replace) {
+                    builderMap.put(trades.profession, new Int2ObjectOpenHashMap<>());
                 } else {
-                    builderMap.putIfAbsent(profession, new Int2ObjectOpenHashMap<>());
+                    builderMap.putIfAbsent(trades.profession, new Int2ObjectOpenHashMap<>());
                 }
 
-                offersObject.keySet().forEach(s -> {
-                    MerchantLevel key = MerchantLevel.valueOf(s.toUpperCase());
-                    List<TradeOffers.Factory> offers = StreamSupport.stream(JsonHelper.getArray(offersObject, s).spliterator(), false).map(element -> (TradeOffers.Factory) GSON.fromJson(JsonHelper.asObject(element, s + "[?]"), TradeOfferFactory.class)).toList();
-                    builderMap.get(profession).putIfAbsent(key.id, new ArrayList<>());
-                    builderMap.get(profession).get(key.id).addAll(offers);
+                trades.trades.forEach((level, factories) -> {
+                    builderMap.get(trades.profession).putIfAbsent(level, new ArrayList<>());
+                    builderMap.get(trades.profession).get(level).addAll(factories);
                 });
                 loadedCount.incrementAndGet();
-            } catch (JsonParseException e) {
-                SimpleJsonVillagerTradesMod.LOGGER.error("Couldn't parse trade offer {}", identifier, e);
-            }
+            } catch (Exception ignored) { }
         });
 
-        ImmutableMap.Builder<Identifier, Int2ObjectMap<TradeOffers.Factory[]>> builder = ImmutableMap.builder();
-        builderMap.forEach((identifier, listInt2ObjectMap) -> {
-            ImmutableMap.Builder<Integer, TradeOffers.Factory[]> innerBuilder = ImmutableMap.builder();
-            listInt2ObjectMap.forEach((integer, tradeOfferFactories) -> innerBuilder.put(integer, tradeOfferFactories.toArray(TradeOffers.Factory[]::new)));
-            builder.put(identifier, new Int2ObjectOpenHashMap<>(innerBuilder.build()));
-        });
-
-        this.offerFactories = builder.build();
+        this.offerFactories = builderMap.entrySet().stream().map(entry -> {
+            Int2ObjectMap<TradeOffers.Factory[]> entries = entry.getValue().int2ObjectEntrySet().stream().map(entry2 -> Pair.of(entry2.getIntKey(), entry2.getValue().toArray(TradeOffers.Factory[]::new))).collect(Int2ObjectOpenHashMap::new, (map, pair) -> map.put(pair.getFirst(), pair.getSecond()), Int2ObjectOpenHashMap::putAll);
+            return Pair.of(entry.getKey(), entries);
+        }).collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
 
         SimpleJsonVillagerTradesMod.LOGGER.info("Loaded {} trade offer files", loadedCount.get());
     }
@@ -126,6 +114,30 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
         MerchantLevel(int id) {
             this.id = id;
         }
+
+        public int getId() {
+            return this.id;
+        }
+
+        public static MerchantLevel fromId(int id) {
+            for (MerchantLevel value : values()) {
+                if (value.id == id) {
+                    return value;
+                }
+            }
+            throw new IllegalStateException("Invalid level provided");
+        }
+    }
+
+    public static record VillagerTrades(Identifier profession, boolean replace, Map<Integer, List<TradeOffers.Factory>> trades) {
+        public static final Codec<VillagerTrades> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Identifier.CODEC.fieldOf("profession").forGetter(VillagerTrades::profession),
+                Codec.BOOL.fieldOf("replace").forGetter(VillagerTrades::replace),
+                Codec.unboundedMap(
+                        CodecHelper.forEnum(MerchantLevel.class).xmap(MerchantLevel::getId, MerchantLevel::fromId),
+                        RegistryWithOptionsCodec.of(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY).listOf()
+                ).fieldOf("offers").forGetter(VillagerTrades::trades)
+        ).apply(instance, VillagerTrades::new));
     }
 
 }

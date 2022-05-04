@@ -11,6 +11,9 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+	maven {
+		url = "https://storage.googleapis.com/devan-maven/"
+	}
 }
 
 sourceSets {
@@ -48,6 +51,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.devtech:arrp:${project.arrp_version}"
 
 	testmodImplementation sourceSets.main.output
 }

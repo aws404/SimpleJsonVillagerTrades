@@ -4,9 +4,10 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.map.MapIcon;
+import net.minecraft.tag.TagKey;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerType;
-import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
@@ -162,7 +163,10 @@ public interface TradeOffersAccessor {
         int getPrice();
 
         @Accessor
-        StructureFeature<?> getStructure();
+        TagKey<ConfiguredStructureFeature<?, ?>> getStructure();
+
+        @Accessor
+        String getNameKey();
 
         @Accessor
         MapIcon.Type getIconType();
