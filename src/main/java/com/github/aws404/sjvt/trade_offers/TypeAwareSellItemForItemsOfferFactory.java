@@ -42,7 +42,7 @@ public class TypeAwareSellItemForItemsOfferFactory implements SerializableTradeO
         this.maxUses = maxUses;
         this.experience = experience;
     }
-    
+
     @Nullable
     @Override
     public TradeOffer create(Entity entity, Random random) {

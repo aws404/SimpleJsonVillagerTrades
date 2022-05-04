@@ -1,0 +1,95 @@
+{
+  "profession": "minecraft:fletcher",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:stick",
+        "price": 32,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 16,
+        "experience": 1,
+        "item": "minecraft:arrow"
+      },
+      {
+        "type": "minecraft:process_item",
+        "sell_item": "minecraft:flint",
+        "sell_count": 10,
+        "experience": 1,
+        "item": "minecraft:gravel",
+        "second_count": 10
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:flint",
+        "price": 26,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 5,
+        "item": "minecraft:bow",
+        "price": 2
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:string",
+        "price": 14,
+        "max_uses": 16,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 10,
+        "item": "minecraft:crossbow",
+        "price": 3
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:feather",
+        "price": 24,
+        "max_uses": 16,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 15,
+        "item": "minecraft:bow",
+        "base_price": 2
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:tripwire_hook",
+        "price": 8,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 15,
+        "item": "minecraft:crossbow",
+        "base_price": 3
+      },
+      {
+        "type": "minecraft:sell_potion_holding_item",
+        "price": 2,
+        "sell_count": 5,
+        "experience": 30,
+        "second_count": 5
+      }
+    ]
+  }
+}

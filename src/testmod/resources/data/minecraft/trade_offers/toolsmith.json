@@ -1,0 +1,120 @@
+{
+  "profession": "minecraft:toolsmith",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:coal",
+        "price": 15,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:stone_axe"
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:stone_shovel"
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:stone_pickaxe"
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:stone_hoe"
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:iron_ingot",
+        "price": 4,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 5,
+        "item": "minecraft:bell",
+        "price": 36
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:flint",
+        "price": 30,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 10,
+        "price_multiplier": 0.2,
+        "item": "minecraft:iron_axe"
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 10,
+        "price_multiplier": 0.2,
+        "item": "minecraft:iron_shovel",
+        "base_price": 2
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 10,
+        "price_multiplier": 0.2,
+        "item": "minecraft:iron_pickaxe",
+        "base_price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "max_uses": 3,
+        "experience": 10,
+        "item": "minecraft:diamond_hoe",
+        "price": 4
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:diamond",
+        "price": 1,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 15,
+        "price_multiplier": 0.2,
+        "item": "minecraft:diamond_axe",
+        "base_price": 12
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 15,
+        "price_multiplier": 0.2,
+        "item": "minecraft:diamond_shovel",
+        "base_price": 5
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 30,
+        "price_multiplier": 0.2,
+        "item": "minecraft:diamond_pickaxe",
+        "base_price": 13
+      }
+    ]
+  }
+}

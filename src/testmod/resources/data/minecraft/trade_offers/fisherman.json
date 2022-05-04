@@ -1,0 +1,106 @@
+{
+  "profession": "minecraft:fisherman",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:string",
+        "price": 20,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:coal",
+        "price": 10,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:process_item",
+        "sell_item": "minecraft:cooked_cod",
+        "sell_count": 6,
+        "max_uses": 16,
+        "experience": 1,
+        "item": "minecraft:cod",
+        "second_count": 6
+      },
+      {
+        "type": "minecraft:sell_item",
+        "max_uses": 16,
+        "experience": 1,
+        "item": "minecraft:cod_bucket",
+        "price": 3
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:cod",
+        "price": 15,
+        "max_uses": 16,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:process_item",
+        "sell_item": "minecraft:cooked_salmon",
+        "sell_count": 6,
+        "max_uses": 16,
+        "experience": 5,
+        "item": "minecraft:salmon",
+        "second_count": 6
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 5,
+        "item": "minecraft:campfire",
+        "price": 2
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:salmon",
+        "price": 13,
+        "max_uses": 16,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:sell_enchanted_tool",
+        "max_uses": 3,
+        "experience": 10,
+        "price_multiplier": 0.2,
+        "item": "minecraft:fishing_rod",
+        "base_price": 3
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:tropical_fish",
+        "price": 6,
+        "experience": 30
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:pufferfish",
+        "price": 4,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:type_aware_buy_for_one_emerald",
+        "experience": 30,
+        "items": {
+          "minecraft:plains": "minecraft:oak_boat",
+          "minecraft:taiga": "minecraft:spruce_boat",
+          "minecraft:snow": "minecraft:spruce_boat",
+          "minecraft:desert": "minecraft:jungle_boat",
+          "minecraft:jungle": "minecraft:jungle_boat",
+          "minecraft:savanna": "minecraft:acacia_boat",
+          "minecraft:swamp": "minecraft:dark_oak_boat"
+        }
+      }
+    ]
+  }
+}

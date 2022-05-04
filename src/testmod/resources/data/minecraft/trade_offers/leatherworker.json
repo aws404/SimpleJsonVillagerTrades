@@ -1,0 +1,88 @@
+{
+  "profession": "minecraft:leatherworker",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:leather",
+        "price": 6,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_leggings",
+        "price": 3,
+        "experience": 1
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_chestplate",
+        "price": 7,
+        "experience": 1
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:flint",
+        "price": 26,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_helmet",
+        "price": 5,
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_boots",
+        "price": 4,
+        "experience": 5
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:rabbit_hide",
+        "price": 9,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_chestplate",
+        "price": 7,
+        "experience": 1
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:scute",
+        "price": 4,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_horse_armor",
+        "price": 6,
+        "experience": 15
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:sell_item",
+        "experience": 30,
+        "item": "minecraft:saddle",
+        "price": 6
+      },
+      {
+        "type": "minecraft:sell_dyed_armor",
+        "item": "minecraft:leather_helmet",
+        "price": 5,
+        "experience": 30
+      }
+    ]
+  }
+}

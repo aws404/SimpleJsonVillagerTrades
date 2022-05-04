@@ -1,0 +1,165 @@
+{
+  "profession": "minecraft:cartographer",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:paper",
+        "price": 24,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:map",
+        "price": 7
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:glass_pane",
+        "price": 11,
+        "max_uses": 16,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_map",
+        "icon": "MONUMENT",
+        "experience": 5,
+        "price": 13,
+        "feature_tag": "minecraft:on_ocean_explorer_maps",
+        "name_key": "filled_map.monument"
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:compass",
+        "price": 1,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:sell_map",
+        "icon": "MANSION",
+        "experience": 10,
+        "price": 14,
+        "feature_tag": "minecraft:on_woodland_explorer_maps",
+        "name_key": "filled_map.mansion"
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:item_frame",
+        "price": 7
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:white_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:blue_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:light_blue_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:red_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:pink_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:green_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:lime_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:gray_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:black_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:purple_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:magenta_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:cyan_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:brown_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:yellow_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:orange_banner",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:light_gray_banner",
+        "price": 3
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:sell_item",
+        "experience": 30,
+        "item": "minecraft:globe_banner_pattern",
+        "price": 8
+      }
+    ]
+  }
+}

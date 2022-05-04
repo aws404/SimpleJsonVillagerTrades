@@ -1,0 +1,91 @@
+{
+  "profession": "minecraft:librarian",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:paper",
+        "price": 24,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:enchant_book",
+        "experience": 1
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:bookshelf",
+        "price": 9
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:book",
+        "price": 4,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:enchant_book",
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 5,
+        "item": "minecraft:lantern"
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:ink_sac",
+        "price": 5,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:enchant_book",
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 4,
+        "experience": 10,
+        "item": "minecraft:glass"
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:writable_book",
+        "price": 2,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:enchant_book",
+        "experience": 15
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:clock",
+        "price": 5
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:compass",
+        "price": 4
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:sell_item",
+        "experience": 30,
+        "item": "minecraft:name_tag",
+        "price": 20
+      }
+    ]
+  }
+}

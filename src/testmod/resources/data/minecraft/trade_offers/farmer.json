@@ -1,0 +1,134 @@
+{
+  "profession": "minecraft:farmer",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:wheat",
+        "price": 20,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:potato",
+        "price": 26,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:carrot",
+        "price": 22,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:beetroot",
+        "price": 15,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 6,
+        "max_uses": 16,
+        "experience": 1,
+        "item": "minecraft:bread"
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:pumpkin",
+        "price": 6,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 4,
+        "experience": 5,
+        "item": "minecraft:pumpkin_pie"
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 4,
+        "max_uses": 16,
+        "experience": 5,
+        "item": "minecraft:apple"
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:sell_item",
+        "count": 18,
+        "experience": 10,
+        "item": "minecraft:cookie",
+        "price": 3
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:melon",
+        "price": 4,
+        "experience": 20
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:cake"
+      },
+      {
+        "type": "minecraft:sell_suspicious_stew",
+        "effect": "minecraft:night_vision",
+        "duration": 100,
+        "experience": 15
+      },
+      {
+        "type": "minecraft:sell_suspicious_stew",
+        "effect": "minecraft:jump_boost",
+        "duration": 160,
+        "experience": 15
+      },
+      {
+        "type": "minecraft:sell_suspicious_stew",
+        "effect": "minecraft:weakness",
+        "duration": 140,
+        "experience": 15
+      },
+      {
+        "type": "minecraft:sell_suspicious_stew",
+        "effect": "minecraft:blindness",
+        "duration": 120,
+        "experience": 15
+      },
+      {
+        "type": "minecraft:sell_suspicious_stew",
+        "effect": "minecraft:poison",
+        "duration": 280,
+        "experience": 15
+      },
+      {
+        "type": "minecraft:sell_suspicious_stew",
+        "effect": "minecraft:saturation",
+        "duration": 7,
+        "experience": 15
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:sell_item",
+        "count": 3,
+        "experience": 30,
+        "item": "minecraft:golden_carrot",
+        "price": 3
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 3,
+        "experience": 30,
+        "item": "minecraft:glistering_melon_slice",
+        "price": 4
+      }
+    ]
+  }
+}

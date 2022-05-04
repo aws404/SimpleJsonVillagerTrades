@@ -1,0 +1,85 @@
+{
+  "profession": "minecraft:butcher",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:chicken",
+        "price": 14,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:porkchop",
+        "price": 7,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:rabbit",
+        "price": 4,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 1,
+        "item": "minecraft:rabbit_stew"
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:coal",
+        "price": 15,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 5,
+        "max_uses": 16,
+        "experience": 5,
+        "item": "minecraft:cooked_porkchop"
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 8,
+        "max_uses": 16,
+        "experience": 5,
+        "item": "minecraft:cooked_chicken"
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:mutton",
+        "price": 7,
+        "max_uses": 16,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:beef",
+        "price": 10,
+        "max_uses": 16,
+        "experience": 20
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:dried_kelp_block",
+        "price": 10,
+        "experience": 30
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:sweet_berries",
+        "price": 10,
+        "experience": 30
+      }
+    ]
+  }
+}

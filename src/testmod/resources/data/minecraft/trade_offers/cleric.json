@@ -1,0 +1,81 @@
+{
+  "profession": "minecraft:cleric",
+  "replace": false,
+  "offers": {
+    "NOVICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:rotten_flesh",
+        "price": 32,
+        "max_uses": 16
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 2,
+        "experience": 1,
+        "item": "minecraft:redstone"
+      }
+    ],
+    "APPRENTICE": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:gold_ingot",
+        "price": 3,
+        "experience": 10
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 5,
+        "item": "minecraft:lapis_lazuli"
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:rabbit_foot",
+        "price": 2,
+        "experience": 20
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 10,
+        "item": "minecraft:glowstone",
+        "price": 4
+      }
+    ],
+    "EXPERT": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:scute",
+        "price": 4,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:glass_bottle",
+        "price": 9,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 15,
+        "item": "minecraft:ender_pearl",
+        "price": 5
+      }
+    ],
+    "MASTER": [
+      {
+        "type": "minecraft:buy_for_one_emerald",
+        "item": "minecraft:nether_wart",
+        "price": 22,
+        "experience": 30
+      },
+      {
+        "type": "minecraft:sell_item",
+        "experience": 30,
+        "item": "minecraft:experience_bottle",
+        "price": 3
+      }
+    ]
+  }
+}
