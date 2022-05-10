@@ -3,6 +3,7 @@ package com.github.aws404.sjvt;
 import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.github.aws404.sjvt.trade_offers.SellItemForItemsOfferFactory;
 import com.github.aws404.sjvt.trade_offers.TypeAwareSellItemForItemsOfferFactory;
+import com.github.aws404.sjvt.trade_offers.TypeAwareTradeOfferFactory;
 import com.github.aws404.sjvt.trade_offers.VanillaTradeOfferFactories;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
@@ -42,8 +43,9 @@ public class SimpleJsonVillagerTradesMod implements ModInitializer {
 		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, new Identifier("sell_map"), VanillaTradeOfferFactories.SELL_MAP);
 		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, new Identifier("sell_dyed_armor"), VanillaTradeOfferFactories.SELL_DYED_ARMOR);
 
-		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, SimpleJsonVillagerTradesMod.id("sell_item_for_items"), SellItemForItemsOfferFactory.CODEC);
-		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, SimpleJsonVillagerTradesMod.id("type_aware_sell_item_for_items"), TypeAwareSellItemForItemsOfferFactory.CODEC);
+		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, id("type_aware"), TypeAwareTradeOfferFactory.CODEC);
+		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, id("sell_item_for_items"), SellItemForItemsOfferFactory.CODEC);
+		Registry.register(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY, id("type_aware_sell_item_for_items"), TypeAwareSellItemForItemsOfferFactory.CODEC);
 	}
 
 	/**

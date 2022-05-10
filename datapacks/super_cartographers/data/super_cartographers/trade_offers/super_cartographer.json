@@ -1,0 +1,111 @@
+{
+  "profession": "minecraft:cartographer",
+  "replace": false,
+  "offers": {
+    "APPRENTICE": [
+      {
+        "type": "minecraft:sell_map",
+        "price": 8,
+        "name_key": "filled_map.ruined_portal",
+        "feature_tag": "super_cartographers:on_ruined_portal_map",
+        "icon": "red_x",
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_map",
+        "price": 8,
+        "name_key": "filled_map.desert_pyramid",
+        "feature_tag": "super_cartographers:on_desert_pyramid_map",
+        "icon": "red_x",
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_map",
+        "price": 5,
+        "name_key": "filled_map.igloo",
+        "feature_tag": "super_cartographers:on_igloo_map",
+        "icon": "red_x",
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_map",
+        "price": 8,
+        "name_key": "filled_map.mineshaft",
+        "feature_tag": "super_cartographers:on_mineshaft_map",
+        "icon": "red_x",
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_map",
+        "price": 6,
+        "name_key": "filled_map.jungle_pyramid",
+        "feature_tag": "super_cartographers:on_jungle_pyramid_map",
+        "icon": "red_x",
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_map",
+        "price": 5,
+        "name_key": "filled_map.swamp_hut",
+        "feature_tag": "super_cartographers:on_swamp_hut_map",
+        "icon": "mansion",
+        "experience": 5
+      }
+    ],
+    "JOURNEYMAN": [
+      {
+        "type": "sjvt:type_aware",
+        "trades": {
+          "default": {
+            "type": "minecraft:sell_map",
+            "price": 14,
+            "name_key": "filled_map.neighbour_village",
+            "feature_tag": "super_cartographers:on_village_map/all",
+            "icon": "mansion",
+            "experience": 10
+          },
+          "minecraft:desert": {
+            "type": "minecraft:sell_map",
+            "price": 14,
+            "name_key": "filled_map.neighbour_village",
+            "feature_tag": "super_cartographers:on_village_map/not_desert",
+            "icon": "mansion",
+            "experience": 10
+          },
+          "minecraft:plains": {
+            "type": "minecraft:sell_map",
+            "price": 14,
+            "name_key": "filled_map.neighbour_village",
+            "feature_tag": "super_cartographers:on_village_map/not_plains",
+            "icon": "mansion",
+            "experience": 10
+          },
+          "minecraft:savanna": {
+            "type": "minecraft:sell_map",
+            "price": 14,
+            "name_key": "filled_map.neighbour_village",
+            "feature_tag": "super_cartographers:on_village_map/not_savanna",
+            "icon": "mansion",
+            "experience": 10
+          },
+          "minecraft:snow": {
+            "type": "minecraft:sell_map",
+            "price": 14,
+            "name_key": "filled_map.neighbour_village",
+            "feature_tag": "super_cartographers:on_village_map/not_snowy",
+            "icon": "mansion",
+            "experience": 10
+          },
+          "minecraft:taiga": {
+            "type": "minecraft:sell_map",
+            "price": 14,
+            "name_key": "filled_map.neighbour_village",
+            "feature_tag": "super_cartographers:on_village_map/not_taiga",
+            "icon": "mansion",
+            "experience": 10
+          }
+        }
+      }
+    ]
+  }
+}

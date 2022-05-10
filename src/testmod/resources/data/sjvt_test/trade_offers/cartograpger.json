@@ -7,12 +7,12 @@
     "apprentice": [
       {
         "type": "minecraft:sell_map",
-        "price": 5,
+        "price": 13,
         "name_key": "filled_map.ruined_portal",
         "feature_tag": "minecraft:ruined_portal",
         "icon": "target_x",
         "max_uses": 10,
-        "experience": 2
+        "experience": 5
       }
     ]
   }

@@ -1,8 +1,8 @@
 package com.github.aws404.sjvt;
 
-import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.github.aws404.sjvt.api.CodecHelper;
 import com.github.aws404.sjvt.api.RegistryWithOptionsCodec;
+import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,6 +15,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.map.MapIcon;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -47,7 +48,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
         AtomicInteger loadedCount = new AtomicInteger();
         prepared.forEach((identifier, jsonElement) -> {
             try {
-                VillagerTrades trades = VillagerTrades.CODEC.decode(JsonOps.INSTANCE, jsonElement).getOrThrow(false, s -> SimpleJsonVillagerTradesMod.LOGGER.error("Failed to read file {}", identifier.toString())).getFirst();
+                VillagerTrades trades = VillagerTrades.CODEC.decode(JsonOps.INSTANCE, jsonElement).getOrThrow(false, s -> SimpleJsonVillagerTradesMod.LOGGER.error("Failed to read file {}: {}", identifier.toString(), s)).getFirst();
                 if (trades.replace) {
                     builderMap.put(trades.profession, new Int2ObjectOpenHashMap<>());
                 } else {
@@ -135,7 +136,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
                 Codec.BOOL.fieldOf("replace").forGetter(VillagerTrades::replace),
                 Codec.unboundedMap(
                         CodecHelper.forEnum(MerchantLevel.class).xmap(MerchantLevel::getId, MerchantLevel::fromId),
-                        RegistryWithOptionsCodec.of(TradeOfferFactories.TRADE_OFFER_FACTORY_REGISTRY).listOf()
+                        TradeOfferFactories.CODEC.listOf()
                 ).fieldOf("offers").forGetter(VillagerTrades::trades)
         ).apply(instance, VillagerTrades::new));
     }
