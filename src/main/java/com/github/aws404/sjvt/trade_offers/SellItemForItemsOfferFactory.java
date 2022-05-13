@@ -1,7 +1,7 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.entity.Entity;

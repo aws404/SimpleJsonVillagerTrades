@@ -1,7 +1,6 @@
 package com.github.aws404.sjvt;
 
 import com.github.aws404.sjvt.api.CodecHelper;
-import com.github.aws404.sjvt.api.RegistryWithOptionsCodec;
 import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
@@ -15,7 +14,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.map.MapIcon;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -28,7 +26,6 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TradeOfferManager extends JsonDataLoader implements IdentifiableResourceReloadListener {
-
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     public static final Identifier WANDERING_TRADER_PROFESSION_ID = Registry.ENTITY_TYPE.getId(EntityType.WANDERING_TRADER);
     private static final Identifier ID = SimpleJsonVillagerTradesMod.id("trade_offers");

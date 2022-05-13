@@ -15,9 +15,9 @@
 
   "license": "CC0-1.0",
 
-  "environment": "*",
+  "environment": "server",
   "entrypoints": {
-    "main": [
+    "server": [
       "com.github.aws404.sjvt.SimpleJsonVillagerTradesMod"
     ]
   },

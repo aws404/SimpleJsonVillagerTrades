@@ -1,13 +1,15 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.TradeOfferManager;
 import com.github.aws404.sjvt.api.CodecHelper;
 import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.entity.Entity;
-import net.minecraft.village.*;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOffers;
+import net.minecraft.village.VillagerDataContainer;
+import net.minecraft.village.VillagerType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;

@@ -17,7 +17,7 @@ public class CodecHelper {
     public static final Codec<ItemStack> SIMPLE_ITEM_STACK_CODEC = Codec.either(
             ItemStack.CODEC,
             Registry.ITEM.getCodec().xmap(ItemStack::new, ItemStack::getItem)
-    ).xmap(either -> either.left().orElseGet(() -> either.right().orElse(ItemStack.EMPTY)), Either::left);
+    ).xmap(either -> either.left().orElseGet(() -> either.right().orElse(ItemStack.EMPTY)), stack -> stack.hasNbt() ? Either.left(stack) : Either.right(stack));
 
     /**
      * Create a codec for a villager type -> element map, also allows the 'default' key to use for undefined villager types.

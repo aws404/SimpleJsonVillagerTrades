@@ -27,7 +27,6 @@ public class VanillaTradeOfferFactories {
             Codec.INT.optionalFieldOf("experience", 2).forGetter(factory -> ((TradeOffersAccessor.SellItemFactoryAccessor) factory).getExperience())
     ).apply(instance, TradeOffers.SellItemFactory::new));
 
-
     public static final Codec<TradeOffers.SellSuspiciousStewFactory> SELL_SUSPICIOUS_STEW = RecordCodecBuilder.create(instance -> instance.group(
             Registry.STATUS_EFFECT.getCodec().fieldOf("effect").forGetter(factory -> ((TradeOffersAccessor.SellSuspiciousStewFactoryAccessor) factory).getEffect()),
             Codec.INT.fieldOf("duration").forGetter(factory -> ((TradeOffersAccessor.SellSuspiciousStewFactoryAccessor) factory).getDuration()),

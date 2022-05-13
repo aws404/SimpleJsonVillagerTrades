@@ -11,10 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public record DefaultMapCodec<K, V>(Codec<K> keyCodec,
-                                    Codec<V> valueCodec,
-                                    Keyable requiredKeys) implements BaseMapCodec<K, V>, Codec<Map<K, V>> {
-
+public record DefaultMapCodec<K, V>(Codec<K> keyCodec, Codec<V> valueCodec, Keyable requiredKeys) implements BaseMapCodec<K, V>, Codec<Map<K, V>> {
     public static <K, V> DefaultMapCodec<K, V> of(Codec<K> keyCodec, Codec<V> valueCodec, Keyable requiredKeys) {
         return new DefaultMapCodec<>(keyCodec, valueCodec, requiredKeys);
     }

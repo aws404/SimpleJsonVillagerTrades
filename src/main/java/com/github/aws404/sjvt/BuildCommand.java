@@ -27,20 +27,22 @@ import java.util.stream.Collectors;
 public class BuildCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, boolean dedicated) {
-        dispatcher.register(CommandManager.literal(SimpleJsonVillagerTradesMod.MOD_ID + ":build")
+        dispatcher.register(CommandManager.literal(SimpleJsonVillagerTradesMod.MOD_ID)
                 .requires(source -> source.hasPermissionLevel(2))
-                .executes(context -> {
-                    RuntimeResourcePack resourcePack = RuntimeResourcePack.create(new Identifier("json_villager_trades"));
+                .then(CommandManager.literal("build")
+                        .executes(context -> {
+                            RuntimeResourcePack resourcePack = RuntimeResourcePack.create(new Identifier("json_villager_trades"));
 
-                    TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> encodeToResourcePack(Registry.VILLAGER_PROFESSION.getId(profession), int2ObjectMap, resourcePack));
-                    encodeToResourcePack(TradeOfferManager.WANDERING_TRADER_PROFESSION_ID, TradeOffers.WANDERING_TRADER_TRADES, resourcePack);
+                            TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> encodeToResourcePack(Registry.VILLAGER_PROFESSION.getId(profession), int2ObjectMap, resourcePack));
+                            encodeToResourcePack(TradeOfferManager.WANDERING_TRADER_PROFESSION_ID, TradeOffers.WANDERING_TRADER_TRADES, resourcePack);
 
-                    Path file = FabricLoader.getInstance().getGameDir().resolve("sjvt_generated_resource_pack").toAbsolutePath();
-                    resourcePack.dump(file);
-                    context.getSource().sendFeedback(new LiteralText("").append(new LiteralText("Hardcoded trades exported to ")).append(new LiteralText(file.toString()).formatted(Formatting.GRAY).styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.toString())))), false);
+                            Path file = FabricLoader.getInstance().getGameDir().resolve("sjvt_generated_resource_pack").toAbsolutePath();
+                            resourcePack.dump(file);
+                            context.getSource().sendFeedback(new LiteralText("").append(new LiteralText("Hardcoded trades exported to ")).append(new LiteralText(file.toString()).formatted(Formatting.GRAY).styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.toString())))), false);
 
-                    return 1;
-                })
+                            return 1;
+                        })
+                )
         );
     }
 
