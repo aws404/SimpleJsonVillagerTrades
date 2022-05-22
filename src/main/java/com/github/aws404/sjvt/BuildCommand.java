@@ -7,11 +7,14 @@ import com.mojang.serialization.JsonOps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.util.UnsafeByteArrayOutputStream;
+
 import net.fabricmc.loader.api.FabricLoader;
+
+import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.ClickEvent;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -26,7 +29,7 @@ import java.util.stream.Collectors;
 
 public class BuildCommand {
 
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, boolean dedicated) {
+    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
         dispatcher.register(CommandManager.literal(SimpleJsonVillagerTradesMod.MOD_ID)
                 .requires(source -> source.hasPermissionLevel(2))
                 .then(CommandManager.literal("build")
@@ -38,7 +41,7 @@ public class BuildCommand {
 
                             Path file = FabricLoader.getInstance().getGameDir().resolve("sjvt_generated_resource_pack").toAbsolutePath();
                             resourcePack.dump(file);
-                            context.getSource().sendFeedback(new LiteralText("").append(new LiteralText("Hardcoded trades exported to ")).append(new LiteralText(file.toString()).formatted(Formatting.GRAY).styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.toString())))), false);
+                            context.getSource().sendFeedback(Text.literal("").append(Text.literal("Hardcoded trades exported to ")).append(Text.literal(file.toString()).formatted(Formatting.GRAY).styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.toString())))), false);
 
                             return 1;
                         })

@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:leatherworker",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:leather",
@@ -22,7 +22,7 @@
         "experience": 1
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:flint",
@@ -42,7 +42,7 @@
         "experience": 5
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:rabbit_hide",
@@ -56,7 +56,7 @@
         "experience": 1
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:scute",
@@ -70,7 +70,7 @@
         "experience": 15
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:sell_item",
         "experience": 30,

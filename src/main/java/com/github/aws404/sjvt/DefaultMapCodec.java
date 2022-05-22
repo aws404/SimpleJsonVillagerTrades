@@ -1,4 +1,4 @@
-package com.github.aws404.sjvt.api;
+package com.github.aws404.sjvt;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;

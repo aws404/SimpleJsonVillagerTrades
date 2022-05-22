@@ -1,19 +1,17 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.api.CodecHelper;
-import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.village.TradeOffer;
 
-import java.util.Random;
-
-public record SellItemForItemsOfferFactory(ItemStack buy1, ItemStack buy2,
-                                           ItemStack sell, int maxUses,
-                                           int experience) implements SerializableTradeOfferFactory<SellItemForItemsOfferFactory> {
-
+public record SellItemForItemsOfferFactory(ItemStack buy1, ItemStack buy2, ItemStack sell, int maxUses, int experience) implements SerializableTradeOfferFactory {
     public static final Codec<SellItemForItemsOfferFactory> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             CodecHelper.SIMPLE_ITEM_STACK_CODEC.fieldOf("buy_1").forGetter(factory -> factory.buy1),
             CodecHelper.SIMPLE_ITEM_STACK_CODEC.optionalFieldOf("buy_2", ItemStack.EMPTY).forGetter(factory -> factory.buy2),
@@ -28,7 +26,7 @@ public record SellItemForItemsOfferFactory(ItemStack buy1, ItemStack buy2,
     }
 
     @Override
-    public Codec<SellItemForItemsOfferFactory> getCodec() {
-        return CODEC;
+    public TradeOfferFactoryType<?> getType() {
+        return TradeOfferFactoryType.SELL_ITEM_FOR_ITEMS;
     }
 }

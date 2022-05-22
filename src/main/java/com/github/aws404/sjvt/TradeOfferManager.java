@@ -1,7 +1,5 @@
 package com.github.aws404.sjvt;
 
-import com.github.aws404.sjvt.api.CodecHelper;
-import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,11 +10,17 @@ import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
+
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+
 import net.minecraft.entity.EntityType;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffers;
@@ -78,7 +82,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
 
     public static void loadVanillaTradesIntoMap(Map<Identifier, Int2ObjectMap<List<TradeOffers.Factory>>> builderMap) {
         TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> {
-            Identifier id = new Identifier(profession.getId());
+            Identifier id = new Identifier(profession.id());
             builderMap.putIfAbsent(id, new Int2ObjectOpenHashMap<>());
             int2ObjectMap.forEach((integer, factories) -> {
                 builderMap.get(id).putIfAbsent(integer, new ArrayList<>());
@@ -98,7 +102,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
     }
 
     @SuppressWarnings("unused")
-    public enum MerchantLevel {
+    public enum MerchantLevel implements StringIdentifiable {
         NOVICE(1),
         APPRENTICE(2),
         JOURNEYMAN(3),
@@ -125,15 +129,20 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
             }
             throw new IllegalStateException("Invalid level provided");
         }
+
+        @Override
+        public String asString() {
+            return this.name().toLowerCase();
+        }
     }
 
     public static record VillagerTrades(Identifier profession, boolean replace, Map<Integer, List<TradeOffers.Factory>> trades) {
         public static final Codec<VillagerTrades> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 Identifier.CODEC.fieldOf("profession").forGetter(VillagerTrades::profession),
-                Codec.BOOL.fieldOf("replace").forGetter(VillagerTrades::replace),
+                Codec.BOOL.optionalFieldOf("replace", false).forGetter(VillagerTrades::replace),
                 Codec.unboundedMap(
-                        CodecHelper.forEnum(MerchantLevel.class).xmap(MerchantLevel::getId, MerchantLevel::fromId),
-                        TradeOfferFactories.CODEC.listOf()
+                        StringIdentifiable.createCodec(MerchantLevel::values).xmap(MerchantLevel::getId, MerchantLevel::fromId),
+                        TradeOfferFactoryType.CODEC.listOf()
                 ).fieldOf("offers").forGetter(VillagerTrades::trades)
         ).apply(instance, VillagerTrades::new));
     }

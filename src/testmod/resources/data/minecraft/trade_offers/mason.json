@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:mason",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:clay_ball",
@@ -17,7 +17,7 @@
         "item": "minecraft:brick"
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:stone",
@@ -33,7 +33,7 @@
         "item": "minecraft:chiseled_stone_bricks"
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:granite",
@@ -84,7 +84,7 @@
         "item": "minecraft:polished_granite"
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:quartz",
@@ -252,7 +252,7 @@
         "item": "minecraft:brown_glazed_terracotta"
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:sell_item",
         "experience": 30,

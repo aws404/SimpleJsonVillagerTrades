@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:librarian",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:paper",
@@ -20,7 +20,7 @@
         "price": 9
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:book",
@@ -37,7 +37,7 @@
         "item": "minecraft:lantern"
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:ink_sac",
@@ -55,7 +55,7 @@
         "item": "minecraft:glass"
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:writable_book",
@@ -79,7 +79,7 @@
         "price": 4
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:sell_item",
         "experience": 30,

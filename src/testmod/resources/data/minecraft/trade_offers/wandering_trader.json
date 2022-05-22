@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:wandering_trader",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "common": [
       {
         "type": "minecraft:sell_item",
         "max_uses": 5,
@@ -381,7 +381,7 @@
         "item": "minecraft:moss_block"
       }
     ],
-    "APPRENTICE": [
+    "rare": [
       {
         "type": "minecraft:sell_item",
         "max_uses": 4,

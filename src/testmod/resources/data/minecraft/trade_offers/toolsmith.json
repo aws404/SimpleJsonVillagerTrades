@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:toolsmith",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:coal",
@@ -30,7 +30,7 @@
         "item": "minecraft:stone_hoe"
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:iron_ingot",
@@ -44,7 +44,7 @@
         "price": 36
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:flint",
@@ -82,7 +82,7 @@
         "price": 4
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:diamond",
@@ -106,7 +106,7 @@
         "base_price": 5
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:sell_enchanted_tool",
         "max_uses": 3,

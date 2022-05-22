@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:farmer",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:wheat",
@@ -35,7 +35,7 @@
         "item": "minecraft:bread"
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:pumpkin",
@@ -56,7 +56,7 @@
         "item": "minecraft:apple"
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:sell_item",
         "count": 18,
@@ -71,7 +71,7 @@
         "experience": 20
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:sell_item",
         "experience": 15,
@@ -114,7 +114,7 @@
         "experience": 15
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:sell_item",
         "count": 3,

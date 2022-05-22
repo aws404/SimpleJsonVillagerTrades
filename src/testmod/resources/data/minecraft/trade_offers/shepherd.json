@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:shepherd",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:white_wool",
@@ -34,7 +34,7 @@
         "price": 2
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:white_dye",
@@ -279,7 +279,7 @@
         "item": "minecraft:black_carpet"
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:yellow_dye",
@@ -412,7 +412,7 @@
         "price": 3
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:brown_dye",
@@ -552,7 +552,7 @@
         "price": 3
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:sell_item",
         "count": 3,

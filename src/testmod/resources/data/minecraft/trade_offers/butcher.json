@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:butcher",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:chicken",
@@ -27,7 +27,7 @@
         "item": "minecraft:rabbit_stew"
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:coal",
@@ -49,7 +49,7 @@
         "item": "minecraft:cooked_chicken"
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:mutton",
@@ -65,7 +65,7 @@
         "experience": 20
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:dried_kelp_block",
@@ -73,7 +73,7 @@
         "experience": 30
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:sweet_berries",

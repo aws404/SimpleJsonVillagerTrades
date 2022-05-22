@@ -1,28 +1,29 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.api.CodecHelper;
-import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
-import com.github.aws404.sjvt.api.TradeOfferFactories;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.jetbrains.annotations.Nullable;
+
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
+
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerDataContainer;
 import net.minecraft.village.VillagerType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-import java.util.Random;
 
-public record TypeAwareTradeOfferFactory(Map<VillagerType, TradeOffers.Factory> tradeOffers) implements SerializableTradeOfferFactory<TypeAwareTradeOfferFactory> {
+public record TypeAwareTradeOfferFactory(Map<VillagerType, TradeOffers.Factory> tradeOffers) implements SerializableTradeOfferFactory {
     public static final Codec<TypeAwareTradeOfferFactory> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            CodecHelper.villagerTypeMap(TradeOfferFactories.CODEC).fieldOf("trades").forGetter(TypeAwareTradeOfferFactory::tradeOffers)
+            CodecHelper.villagerTypeMap(TradeOfferFactoryType.CODEC).fieldOf("trades").forGetter(TypeAwareTradeOfferFactory::tradeOffers)
     ).apply(instance, TypeAwareTradeOfferFactory::new));
 
     @Override
-    public Codec<TypeAwareTradeOfferFactory> getCodec() {
-        return CODEC;
+    public TradeOfferFactoryType<?> getType() {
+        return TradeOfferFactoryType.TYPE_AWARE;
     }
 
     @Nullable

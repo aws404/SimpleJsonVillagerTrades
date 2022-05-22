@@ -1,5 +1,8 @@
 package com.github.aws404.sjvt.mixin;
 
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -7,9 +10,7 @@ import net.minecraft.item.map.MapIcon;
 import net.minecraft.tag.TagKey;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerType;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.gen.Accessor;
+import net.minecraft.world.gen.structure.StructureType;
 
 import java.util.Map;
 
@@ -163,7 +164,7 @@ public interface TradeOffersAccessor {
         int getPrice();
 
         @Accessor
-        TagKey<ConfiguredStructureFeature<?, ?>> getStructure();
+        TagKey<StructureType> getStructure();
 
         @Accessor
         String getNameKey();

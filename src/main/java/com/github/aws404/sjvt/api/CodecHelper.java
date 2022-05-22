@@ -2,6 +2,9 @@ package com.github.aws404.sjvt.api;
 
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+
+import com.github.aws404.sjvt.DefaultMapCodec;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.registry.Registry;
@@ -12,7 +15,7 @@ import java.util.Map;
 public class CodecHelper {
 
     /**
-     * Am ItemStack codec to allow both explicit creation or just an item Identifier
+     * An ItemStack codec to allow both explicit creation or just an item Identifier
      */
     public static final Codec<ItemStack> SIMPLE_ITEM_STACK_CODEC = Codec.either(
             ItemStack.CODEC,
@@ -32,7 +35,7 @@ public class CodecHelper {
      * @param enumClass the class of the enum to use
      */
     public static <T extends Enum<T>> Codec<T> forEnum(Class<T> enumClass) {
-        return Codecs.orCompressed(Codecs.method_39508(Enum::name, value -> {
+        return Codecs.orCompressed(Codecs.idChecked(Enum::name, value -> {
             try {
                 return Enum.valueOf(enumClass, value.toUpperCase());
             } catch (IllegalArgumentException e) {

@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:fisherman",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:string",
@@ -32,7 +32,7 @@
         "price": 3
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:cod",
@@ -56,7 +56,7 @@
         "price": 2
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:salmon",
@@ -73,7 +73,7 @@
         "base_price": 3
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:tropical_fish",
@@ -81,7 +81,7 @@
         "experience": 30
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:pufferfish",

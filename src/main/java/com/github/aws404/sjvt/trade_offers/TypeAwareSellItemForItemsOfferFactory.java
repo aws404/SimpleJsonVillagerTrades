@@ -1,23 +1,24 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.api.CodecHelper;
-import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.jetbrains.annotations.Nullable;
+
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerDataContainer;
 import net.minecraft.village.VillagerType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
 
-public class TypeAwareSellItemForItemsOfferFactory implements SerializableTradeOfferFactory<TypeAwareSellItemForItemsOfferFactory> {
-
+public class TypeAwareSellItemForItemsOfferFactory implements SerializableTradeOfferFactory {
     public static final Codec<TypeAwareSellItemForItemsOfferFactory> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             CodecHelper.villagerTypeMap(CodecHelper.SIMPLE_ITEM_STACK_CODEC).fieldOf("buy_1").forGetter(typeAwareSellItemForItemsOfferFactory -> typeAwareSellItemForItemsOfferFactory.buyMap1),
             CodecHelper.villagerTypeMap(CodecHelper.SIMPLE_ITEM_STACK_CODEC).optionalFieldOf("buy_2").forGetter(typeAwareSellItemForItemsOfferFactory -> Optional.ofNullable(typeAwareSellItemForItemsOfferFactory.buyMap2)),
@@ -57,7 +58,7 @@ public class TypeAwareSellItemForItemsOfferFactory implements SerializableTradeO
     }
 
     @Override
-    public Codec<TypeAwareSellItemForItemsOfferFactory> getCodec() {
-        return CODEC;
+    public TradeOfferFactoryType<?> getType() {
+        return TradeOfferFactoryType.TYPE_AWARE_SELL_ITEMS_FOR_ITEM;
     }
 }

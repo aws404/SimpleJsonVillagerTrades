@@ -1,8 +1,8 @@
 {
   "profession": "minecraft:fletcher",
-  "replace": false,
+  "replace": true,
   "offers": {
-    "NOVICE": [
+    "novice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:stick",
@@ -24,7 +24,7 @@
         "second_count": 10
       }
     ],
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:flint",
@@ -38,7 +38,7 @@
         "price": 2
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:string",
@@ -53,7 +53,7 @@
         "price": 3
       }
     ],
-    "EXPERT": [
+    "expert": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:feather",
@@ -69,7 +69,7 @@
         "base_price": 2
       }
     ],
-    "MASTER": [
+    "master": [
       {
         "type": "minecraft:buy_for_one_emerald",
         "item": "minecraft:tripwire_hook",

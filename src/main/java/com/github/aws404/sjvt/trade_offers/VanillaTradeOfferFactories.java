@@ -1,9 +1,11 @@
 package com.github.aws404.sjvt.trade_offers;
 
-import com.github.aws404.sjvt.api.CodecHelper;
-import com.github.aws404.sjvt.mixin.TradeOffersAccessor;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+import com.github.aws404.sjvt.api.CodecHelper;
+import com.github.aws404.sjvt.mixin.TradeOffersAccessor;
+
 import net.minecraft.item.Items;
 import net.minecraft.item.map.MapIcon;
 import net.minecraft.tag.TagKey;
@@ -74,7 +76,7 @@ public class VanillaTradeOfferFactories {
 
     public static final Codec<TradeOffers.SellMapFactory> SELL_MAP = RecordCodecBuilder.create(instance -> instance.group(
             Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getPrice()),
-            Identifier.CODEC.fieldOf("feature_tag").xmap(identifier -> TagKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, identifier), TagKey::id).forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getStructure()),
+            Identifier.CODEC.fieldOf("feature_tag").xmap(identifier -> TagKey.of(Registry.STRUCTURE_KEY, identifier), TagKey::id).forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getStructure()),
             Codec.STRING.fieldOf("name_key").forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getNameKey()),
             CodecHelper.forEnum(MapIcon.Type.class).optionalFieldOf("icon", MapIcon.Type.TARGET_X).forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getIconType()),
             Codec.INT.optionalFieldOf("max_uses", 12).forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getMaxUses()),
@@ -88,36 +90,36 @@ public class VanillaTradeOfferFactories {
             Codec.INT.optionalFieldOf("experience", 2).forGetter(factory -> ((TradeOffersAccessor.SellDyedArmorFactoryAccessor) factory).getExperience())
     ).apply(instance, TradeOffers.SellDyedArmorFactory::new));
 
-    public static Codec<? extends TradeOffers.Factory> getVanillaFactoryCodec(TradeOffers.Factory factory) {
+    public static TradeOfferFactoryType<?> getVanillaFactoryCodec(TradeOffers.Factory factory) {
         if (factory instanceof TradeOffers.BuyForOneEmeraldFactory) {
-            return VanillaTradeOfferFactories.BUY_FOR_ONE_EMERALD;
+            return TradeOfferFactoryType.BUY_FOR_ONE_EMERALD;
         }
         if (factory instanceof TradeOffers.SellItemFactory) {
-            return VanillaTradeOfferFactories.SELL_ITEM;
+            return TradeOfferFactoryType.SELL_ITEM;
         }
         if (factory instanceof TradeOffers.SellSuspiciousStewFactory) {
-            return VanillaTradeOfferFactories.SELL_SUSPICIOUS_STEW;
+            return TradeOfferFactoryType.SELL_SUSPICIOUS_STEW;
         }
         if (factory instanceof TradeOffers.ProcessItemFactory) {
-            return VanillaTradeOfferFactories.PROCESS_ITEM;
+            return TradeOfferFactoryType.PROCESS_ITEM;
         }
         if (factory instanceof TradeOffers.SellEnchantedToolFactory) {
-            return VanillaTradeOfferFactories.SELL_ENCHANTED_TOOL;
+            return TradeOfferFactoryType.SELL_ENCHANTED_TOOL;
         }
         if (factory instanceof TradeOffers.TypeAwareBuyForOneEmeraldFactory) {
-            return VanillaTradeOfferFactories.TYPE_AWARE_BUY_FOR_ONE_EMERALD;
+            return TradeOfferFactoryType.TYPE_AWARE_BUY_FOR_ONE_EMERALD;
         }
         if (factory instanceof TradeOffers.SellPotionHoldingItemFactory) {
-            return VanillaTradeOfferFactories.SELL_POTION_HOLDING_ITEM;
+            return TradeOfferFactoryType.SELL_POTION_HOLDING_ITEM;
         }
         if (factory instanceof TradeOffers.EnchantBookFactory) {
-            return VanillaTradeOfferFactories.ENCHANT_BOOK;
+            return TradeOfferFactoryType.ENCHANT_BOOK;
         }
         if (factory instanceof TradeOffers.SellMapFactory) {
-            return VanillaTradeOfferFactories.SELL_MAP;
+            return TradeOfferFactoryType.SELL_MAP;
         }
         if (factory instanceof TradeOffers.SellDyedArmorFactory) {
-            return VanillaTradeOfferFactories.SELL_DYED_ARMOR;
+            return TradeOfferFactoryType.SELL_DYED_ARMOR;
         }
 
         throw new IllegalStateException("Could not find codec for factory " + factory.getClass());
