@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
 
-import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
@@ -19,7 +18,7 @@ import net.minecraft.util.registry.Registry;
 public class SimpleJsonVillagerTradesMod implements ModInitializer {
 	public static final String MOD_ID = "sjvt";
 	public static final Logger LOGGER = LoggerFactory.getLogger("SimpleJsonVillagerTrades");
-	public static final Registry<TradeOfferFactoryType<?>> TRADE_OFFER_FACTORY_REGISTRY = FabricRegistryBuilder.<TradeOfferFactoryType<?>>createSimple(null, SimpleJsonVillagerTradesMod.id("trade_offer_factories")).buildAndRegister();
+	public static final Registry<TradeOfferFactoryType<?>> TRADE_OFFER_FACTORY_REGISTRY = FabricRegistryBuilder.createSimple(getType(TradeOfferFactoryType.class), id("trade_offer_factories")).buildAndRegister();
 	public static final TradeOfferManager TRADE_OFFER_MANAGER = new TradeOfferManager();
 
 	@Override
@@ -43,4 +42,7 @@ public class SimpleJsonVillagerTradesMod implements ModInitializer {
 		return new Identifier(MOD_ID, string);
 	}
 
+	private static Class<TradeOfferFactoryType<?>> getType(Class<?> clazz) {
+		return null;
+	}
 }
