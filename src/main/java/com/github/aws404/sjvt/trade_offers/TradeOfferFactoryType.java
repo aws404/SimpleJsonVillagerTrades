@@ -34,4 +34,7 @@ public interface TradeOfferFactoryType<P extends TradeOffers.Factory> {
     static <P extends TradeOffers.Factory> TradeOfferFactoryType<P> register(Identifier id, Codec<P> codec) {
         return Registry.register(SimpleJsonVillagerTradesMod.TRADE_OFFER_FACTORY_REGISTRY, id, () -> codec);
     }
+
+    static void bootstrap() {
+    }
 }

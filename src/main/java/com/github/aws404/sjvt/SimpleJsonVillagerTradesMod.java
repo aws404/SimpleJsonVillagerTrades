@@ -18,12 +18,13 @@ import net.minecraft.util.registry.Registry;
 public class SimpleJsonVillagerTradesMod implements ModInitializer {
 	public static final String MOD_ID = "sjvt";
 	public static final Logger LOGGER = LoggerFactory.getLogger("SimpleJsonVillagerTrades");
-	public static final Registry<TradeOfferFactoryType<?>> TRADE_OFFER_FACTORY_REGISTRY = FabricRegistryBuilder.createSimple(getType(TradeOfferFactoryType.class), id("trade_offer_factories")).buildAndRegister();
+	public static final Registry<TradeOfferFactoryType<?>> TRADE_OFFER_FACTORY_REGISTRY = FabricRegistryBuilder.createSimple(getType(TradeOfferFactoryType.class), id("trade_offer_factory")).buildAndRegister();
 	public static final TradeOfferManager TRADE_OFFER_MANAGER = new TradeOfferManager();
 
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Starting SimpleJsonVillagerTrades!");
+		TradeOfferFactoryType.bootstrap();
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(TRADE_OFFER_MANAGER);
 
 		if (FabricLoader.getInstance().isModLoaded("advanced_runtime_resource_pack")) {
