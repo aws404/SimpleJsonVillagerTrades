@@ -1,7 +1,6 @@
-package com.github.aws404.sjvt;
+package com.github.aws404.sjvt.commands;
 
 import com.google.gson.JsonElement;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.JsonOps;
@@ -9,9 +8,9 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.util.UnsafeByteArrayOutputStream;
 
-import net.fabricmc.loader.api.FabricLoader;
+import com.github.aws404.sjvt.SimpleJsonVillagerTradesMod;
+import com.github.aws404.sjvt.TradeOfferManager;
 
-import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.ClickEvent;
@@ -28,19 +27,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Commands {
-
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
-        LiteralArgumentBuilder<ServerCommandSource> baseCommand = CommandManager.literal(SimpleJsonVillagerTradesMod.MOD_ID).requires(source -> source.hasPermissionLevel(2));
-
-        if (FabricLoader.getInstance().isModLoaded("advanced_runtime_resource_pack")) {
-            registerBuildCommand(baseCommand);
-        }
-
-        dispatcher.register(baseCommand);
-    }
-
-    private static void registerBuildCommand(LiteralArgumentBuilder<ServerCommandSource> baseCommand) {
+public class BuildCommand {
+    public static void registerBuildCommand(LiteralArgumentBuilder<ServerCommandSource> baseCommand) {
         baseCommand.then(CommandManager.literal("build")
                 .executes(context -> {
                     RuntimeResourcePack resourcePack = RuntimeResourcePack.create(new Identifier("json_villager_trades"));

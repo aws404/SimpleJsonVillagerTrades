@@ -3,6 +3,7 @@ package com.github.aws404.sjvt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.aws404.sjvt.commands.Commands;
 import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
 
 import net.fabricmc.api.ModInitializer;
