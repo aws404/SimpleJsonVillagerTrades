@@ -86,9 +86,9 @@ jar {
 modrinth {
 	token = System.getenv("MODRINTH_TOKEN")
 	projectId = "RC8KrNHi"
-	versionType = "alpha"
+	versionType = System.getenv("ALPHA") ? "alpha" : "release"
+	changelog = System.getenv("CAHNGELOG")
 	uploadFile = remapJar
-	gameVersions = ["1.19-pre3"]
 	dependencies {
 		required.project "P7dR8mSH"
 	}

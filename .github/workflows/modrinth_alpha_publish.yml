@@ -36,7 +36,9 @@ jobs:
         java-version: ${{ matrix.java }}
     - name: make gradle wrapper executable
       run: chmod +x ./gradlew
-    - name: build
+    - name: publish
       run: ./gradlew modrinth
       env:
         MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        ALPHA: ${{ github.event.release.prerelease }}
+        CAHNGELOG: ${{ github.event.release.body }}
