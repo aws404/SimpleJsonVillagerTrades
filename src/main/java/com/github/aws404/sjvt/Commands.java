@@ -31,9 +31,7 @@ import java.util.stream.Collectors;
 public class Commands {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
-                .then(CommandManager.literal("build")
-                        .executes(context -> {
-                            RuntimeResourcePack resourcePack = RuntimeResourcePack.create(new Identifier("json_villager_trades"));
+        LiteralArgumentBuilder<ServerCommandSource> baseCommand = CommandManager.literal(SimpleJsonVillagerTradesMod.MOD_ID).requires(source -> source.hasPermissionLevel(2));
 
         if (FabricLoader.getInstance().isModLoaded("advanced_runtime_resource_pack")) {
             registerBuildCommand(baseCommand);
