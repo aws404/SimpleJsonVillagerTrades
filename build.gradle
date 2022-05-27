@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
+	id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -79,6 +80,17 @@ java {
 jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
+	}
+}
+
+modrinth {
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = "RC8KrNHi"
+	versionType = "alpha"
+	uploadFile = remapJar
+	gameVersions = ["1.19-pre3"]
+	dependencies {
+		required.project "P7dR8mSH"
 	}
 }
 

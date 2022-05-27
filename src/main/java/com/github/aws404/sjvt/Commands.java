@@ -2,11 +2,14 @@ package com.github.aws404.sjvt;
 
 import com.google.gson.JsonElement;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.JsonOps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.util.UnsafeByteArrayOutputStream;
+
+import net.fabricmc.loader.api.FabricLoader;
 
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
@@ -25,25 +28,34 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class BuildCommand {
+public class Commands {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
-        dispatcher.register(CommandManager.literal(SimpleJsonVillagerTradesMod.MOD_ID)
-                .requires(source -> source.hasPermissionLevel(2))
                 .then(CommandManager.literal("build")
                         .executes(context -> {
                             RuntimeResourcePack resourcePack = RuntimeResourcePack.create(new Identifier("json_villager_trades"));
 
-                            TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> encodeToResourcePack(Registry.VILLAGER_PROFESSION.getId(profession), int2ObjectMap, resourcePack));
-                            encodeToResourcePack(TradeOfferManager.WANDERING_TRADER_PROFESSION_ID, TradeOffers.WANDERING_TRADER_TRADES, resourcePack);
+        if (FabricLoader.getInstance().isModLoaded("advanced_runtime_resource_pack")) {
+            registerBuildCommand(baseCommand);
+        }
 
-                            Path file = Paths.get(".").resolve("sjvt_generated_resource_pack").toAbsolutePath();
-                            resourcePack.dump(file);
-                            context.getSource().sendFeedback(Text.literal("Hardcoded trades exported to: " + file.toAbsolutePath()).styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.toString()))), false);
+        dispatcher.register(baseCommand);
+    }
 
-                            return 1;
-                        })
-                )
+    private static void registerBuildCommand(LiteralArgumentBuilder<ServerCommandSource> baseCommand) {
+        baseCommand.then(CommandManager.literal("build")
+                .executes(context -> {
+                    RuntimeResourcePack resourcePack = RuntimeResourcePack.create(new Identifier("json_villager_trades"));
+
+                    TradeOffers.PROFESSION_TO_LEVELED_TRADE.forEach((profession, int2ObjectMap) -> encodeToResourcePack(Registry.VILLAGER_PROFESSION.getId(profession), int2ObjectMap, resourcePack));
+                    encodeToResourcePack(TradeOfferManager.WANDERING_TRADER_PROFESSION_ID, TradeOffers.WANDERING_TRADER_TRADES, resourcePack);
+
+                    Path file = Paths.get(".").resolve("sjvt_generated_resource_pack").toAbsolutePath();
+                    resourcePack.dump(file);
+                    context.getSource().sendFeedback(Text.literal("Hardcoded trades exported to: " + file.toAbsolutePath()).styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.toString()))), false);
+
+                    return 1;
+                })
         );
     }
 
