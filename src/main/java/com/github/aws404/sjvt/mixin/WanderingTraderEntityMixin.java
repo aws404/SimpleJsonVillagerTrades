@@ -1,40 +1,21 @@
 package com.github.aws404.sjvt.mixin;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 import com.github.aws404.sjvt.SimpleJsonVillagerTradesMod;
-import com.github.aws404.sjvt.TradeOfferManager;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
-import net.minecraft.village.TradeOfferList;
 import net.minecraft.village.TradeOffers;
-import net.minecraft.world.World;
-
-import java.util.Optional;
 
 @Mixin(WanderingTraderEntity.class)
-public abstract class WanderingTraderEntityMixin extends MerchantEntity {
+public class WanderingTraderEntityMixin {
 
-    public WanderingTraderEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
-        super(entityType, world);
-    }
-
-    @Inject(method = "fillRecipes", at = @At("HEAD"), cancellable = true)
-    public void addJsonRecipes(CallbackInfo ci) {
-        Optional<TradeOffers.Factory[]> commonOffers = SimpleJsonVillagerTradesMod.TRADE_OFFER_MANAGER.getWanderingTraderOffers(TradeOfferManager.MerchantLevel.COMMON);
-        Optional<TradeOffers.Factory[]> rareOffers = SimpleJsonVillagerTradesMod.TRADE_OFFER_MANAGER.getWanderingTraderOffers(TradeOfferManager.MerchantLevel.RARE);
-        if (commonOffers.isPresent() && rareOffers.isPresent()) {
-            TradeOfferList tradeOfferList = this.getOffers();
-            this.fillRecipesFromPool(tradeOfferList, commonOffers.get(), 5);
-            this.fillRecipesFromPool(tradeOfferList, rareOffers.get(), 1);
-            ci.cancel();
-            return;
-        }
-        SimpleJsonVillagerTradesMod.LOGGER.error("Could not find JSON trade offers for the Wandering Trader, using default behaviour.");
+    @SuppressWarnings("unchecked")
+    @Redirect(method = "fillRecipes", at = @At(value = "INVOKE", target = "Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;get(I)Ljava/lang/Object;"))
+    public <T> T extra_professions_redirectTradeMap(Int2ObjectMap<T> int2ObjectMap, int i) {
+        return (T) SimpleJsonVillagerTradesMod.TRADE_OFFER_MANAGER.getWanderingTraderOffers(i).orElse(new TradeOffers.Factory[0]);
     }
 }

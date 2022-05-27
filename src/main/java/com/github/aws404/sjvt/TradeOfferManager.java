@@ -6,12 +6,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-import com.github.aws404.sjvt.api.CodecHelper;
 import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
 
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
@@ -58,14 +58,14 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
 
                 trades.trades.forEach((level, factories) -> {
                     builderMap.get(trades.profession).putIfAbsent(level, new ArrayList<>());
-                    builderMap.get(trades.profession).get(level).addAll(factories);
+                    builderMap.get(trades.profession).get((int) level).addAll(factories);
                 });
                 loadedCount.incrementAndGet();
             } catch (Exception ignored) { }
         });
 
         this.offerFactories = builderMap.entrySet().stream().map(entry -> {
-            Int2ObjectMap<TradeOffers.Factory[]> entries = entry.getValue().int2ObjectEntrySet().stream().map(entry2 -> Pair.of(entry2.getIntKey(), entry2.getValue().toArray(TradeOffers.Factory[]::new))).collect(Int2ObjectOpenHashMap::new, (map, pair) -> map.put(pair.getFirst(), pair.getSecond()), Int2ObjectOpenHashMap::putAll);
+            Int2ObjectMap<TradeOffers.Factory[]> entries = entry.getValue().int2ObjectEntrySet().stream().map(entry2 -> Pair.of(entry2.getIntKey(), entry2.getValue().toArray(TradeOffers.Factory[]::new))).collect(Int2ObjectOpenHashMap::new, (map, pair) -> map.put((int) pair.getFirst(), pair.getSecond()), Int2ObjectOpenHashMap::putAll);
             return Pair.of(entry.getKey(), entries);
         }).collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
 
@@ -76,8 +76,8 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
         return Optional.ofNullable(offerFactories.get(Registry.VILLAGER_PROFESSION.getId(profession)));
     }
 
-    public Optional<TradeOffers.Factory[]> getWanderingTraderOffers(MerchantLevel rarity) {
-        return Optional.ofNullable(offerFactories.get(WANDERING_TRADER_PROFESSION_ID).get(rarity.id));
+    public Optional<TradeOffers.Factory[]> getWanderingTraderOffers(int rarity) {
+        return Optional.ofNullable(offerFactories.get(WANDERING_TRADER_PROFESSION_ID).get(rarity));
     }
 
     public static void loadVanillaTradesIntoMap(Map<Identifier, Int2ObjectMap<List<TradeOffers.Factory>>> builderMap) {
@@ -101,19 +101,20 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
         return ID;
     }
 
-    @SuppressWarnings("unused")
     public enum MerchantLevel implements StringIdentifiable {
-        NOVICE(1),
-        APPRENTICE(2),
-        JOURNEYMAN(3),
-        EXPERT(4),
-        MASTER(5),
-        COMMON(1),
-        RARE(2);
+        NOVICE("novice", 1),
+        APPRENTICE("apprentice", 2),
+        JOURNEYMAN("journeyman", 3),
+        EXPERT("expert", 4),
+        MASTER("master", 5),
+        COMMON("common", 1),
+        RARE("rare", 2);
 
+        public final String name;
         public final int id;
 
-        MerchantLevel(int id) {
+        MerchantLevel(String name, int id) {
+            this.name = name;
             this.id = id;
         }
 
@@ -121,18 +122,19 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
             return this.id;
         }
 
-        public static MerchantLevel fromId(int id) {
+        public static DataResult<MerchantLevel> fromId(int id) {
             for (MerchantLevel value : values()) {
                 if (value.id == id) {
-                    return value;
+                    return DataResult.success(value);
                 }
             }
-            throw new IllegalStateException("Invalid level provided");
+
+            return DataResult.error("Invalid level index " + id + " provided.");
         }
 
         @Override
         public String asString() {
-            return this.name().toLowerCase();
+            return this.name;
         }
     }
 
@@ -141,7 +143,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
                 Identifier.CODEC.fieldOf("profession").forGetter(VillagerTrades::profession),
                 Codec.BOOL.optionalFieldOf("replace", false).forGetter(VillagerTrades::replace),
                 Codec.unboundedMap(
-                        StringIdentifiable.createCodec(MerchantLevel::values).xmap(MerchantLevel::getId, MerchantLevel::fromId),
+                        StringIdentifiable.createCodec(MerchantLevel::values).flatComapMap(MerchantLevel::getId, MerchantLevel::fromId),
                         TradeOfferFactoryType.CODEC.listOf()
                 ).fieldOf("offers").forGetter(VillagerTrades::trades)
         ).apply(instance, VillagerTrades::new));

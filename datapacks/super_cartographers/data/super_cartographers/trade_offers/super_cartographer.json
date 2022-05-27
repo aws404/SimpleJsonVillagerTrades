@@ -2,7 +2,7 @@
   "profession": "minecraft:cartographer",
   "replace": false,
   "offers": {
-    "APPRENTICE": [
+    "apprentice": [
       {
         "type": "minecraft:sell_map",
         "price": 8,
@@ -52,7 +52,7 @@
         "experience": 5
       }
     ],
-    "JOURNEYMAN": [
+    "journeyman": [
       {
         "type": "sjvt:type_aware",
         "trades": {

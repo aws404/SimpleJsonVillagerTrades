@@ -3,7 +3,6 @@ package com.github.aws404.sjvt.trade_offers;
 import com.mojang.serialization.Codec;
 
 import com.github.aws404.sjvt.SimpleJsonVillagerTradesMod;
-import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -12,6 +11,8 @@ import net.minecraft.village.TradeOffers;
 import static com.github.aws404.sjvt.SimpleJsonVillagerTradesMod.id;
 
 public interface TradeOfferFactoryType<P extends TradeOffers.Factory> {
+    Codec<TradeOffers.Factory> CODEC = SimpleJsonVillagerTradesMod.TRADE_OFFER_FACTORY_REGISTRY.getCodec().dispatch("type", factory -> ((TradeOfferFactoryTypeHolder) factory).getType(), TradeOfferFactoryType::codec);
+
     TradeOfferFactoryType<TradeOffers.BuyForOneEmeraldFactory> BUY_FOR_ONE_EMERALD = register(new Identifier("buy_for_one_emerald"), VanillaTradeOfferFactories.BUY_FOR_ONE_EMERALD);
     TradeOfferFactoryType<TradeOffers.SellItemFactory> SELL_ITEM = register(new Identifier("sell_item"), VanillaTradeOfferFactories.SELL_ITEM);
     TradeOfferFactoryType<TradeOffers.SellSuspiciousStewFactory> SELL_SUSPICIOUS_STEW = register(new Identifier("sell_suspicious_stew"), VanillaTradeOfferFactories.SELL_SUSPICIOUS_STEW);
@@ -27,14 +28,12 @@ public interface TradeOfferFactoryType<P extends TradeOffers.Factory> {
     TradeOfferFactoryType<TypeAwareSellItemForItemsOfferFactory> TYPE_AWARE_SELL_ITEMS_FOR_ITEM = register(id("type_aware_sell_item_for_items"), TypeAwareSellItemForItemsOfferFactory.CODEC);
     TradeOfferFactoryType<TypeAwareTradeOfferFactory> TYPE_AWARE = register(id("type_aware"), TypeAwareTradeOfferFactory.CODEC);
 
-    Codec<TradeOffers.Factory> CODEC = SimpleJsonVillagerTradesMod.TRADE_OFFER_FACTORY_REGISTRY.getCodec().dispatch("type", factory -> ((TradeOfferFactoryTypeHolder) factory).getType(), TradeOfferFactoryType::codec);
-
     Codec<P> codec();
 
     static <P extends TradeOffers.Factory> TradeOfferFactoryType<P> register(Identifier id, Codec<P> codec) {
         return Registry.register(SimpleJsonVillagerTradesMod.TRADE_OFFER_FACTORY_REGISTRY, id, () -> codec);
     }
 
-    static void bootstrap() {
+    static void init() {
     }
 }

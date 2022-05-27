@@ -1,7 +1,6 @@
 package com.github.aws404.sjvt.trade_offers;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.jetbrains.annotations.Nullable;
 
 import com.github.aws404.sjvt.api.CodecHelper;
@@ -17,9 +16,7 @@ import net.minecraft.village.VillagerType;
 import java.util.Map;
 
 public record TypeAwareTradeOfferFactory(Map<VillagerType, TradeOffers.Factory> tradeOffers) implements SerializableTradeOfferFactory {
-    public static final Codec<TypeAwareTradeOfferFactory> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            CodecHelper.villagerTypeMap(TradeOfferFactoryType.CODEC).fieldOf("trades").forGetter(TypeAwareTradeOfferFactory::tradeOffers)
-    ).apply(instance, TypeAwareTradeOfferFactory::new));
+    public static final Codec<TypeAwareTradeOfferFactory> CODEC = CodecHelper.villagerTypeMap(TradeOfferFactoryType.CODEC).fieldOf("trades").xmap(TypeAwareTradeOfferFactory::new, TypeAwareTradeOfferFactory::tradeOffers).codec();
 
     @Override
     public TradeOfferFactoryType<?> getType() {

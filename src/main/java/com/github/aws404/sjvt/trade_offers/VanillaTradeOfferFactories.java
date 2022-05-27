@@ -70,9 +70,7 @@ public class VanillaTradeOfferFactories {
             Codec.INT.optionalFieldOf("experience", 2).forGetter(factory -> ((TradeOffersAccessor.SellPotionHoldingItemFactoryAccessor) factory).getExperience())
     ).apply(instance, TradeOffers.SellPotionHoldingItemFactory::new));
 
-    public static final Codec<TradeOffers.EnchantBookFactory> ENCHANT_BOOK = RecordCodecBuilder.create(instance -> instance.group(
-            Codec.INT.optionalFieldOf("experience", 2).forGetter(factory -> ((TradeOffersAccessor.EnchantBookFactoryAccessor) factory).getExperience())
-    ).apply(instance, TradeOffers.EnchantBookFactory::new));
+    public static final Codec<TradeOffers.EnchantBookFactory> ENCHANT_BOOK = Codec.INT.optionalFieldOf("experience", 2).xmap(TradeOffers.EnchantBookFactory::new, o -> ((TradeOffersAccessor.EnchantBookFactoryAccessor) o).getExperience()).codec();
 
     public static final Codec<TradeOffers.SellMapFactory> SELL_MAP = RecordCodecBuilder.create(instance -> instance.group(
             Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> ((TradeOffersAccessor.SellMapFactoryAccessor) factory).getPrice()),

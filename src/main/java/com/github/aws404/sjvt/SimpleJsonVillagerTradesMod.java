@@ -24,7 +24,7 @@ public class SimpleJsonVillagerTradesMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Starting SimpleJsonVillagerTrades!");
-		TradeOfferFactoryType.bootstrap();
+		TradeOfferFactoryType.init();
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(TRADE_OFFER_MANAGER);
 
 		if (FabricLoader.getInstance().isModLoaded("advanced_runtime_resource_pack")) {
