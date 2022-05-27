@@ -34,8 +34,7 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
     - name: make gradle wrapper executable
-        if: ${{ runner.os != 'Windows' }}
-        run: chmod +x ./gradlew
+      run: chmod +x ./gradlew
     - name: build
       run: ./gradlew modrinth
       env:
