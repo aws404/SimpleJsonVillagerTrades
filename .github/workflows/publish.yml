@@ -35,6 +35,8 @@ jobs:
         java-version: ${{ matrix.java }}
     - name: make gradle wrapper executable
       run: chmod +x ./gradlew
+    - name: build mod
+      run: ./gradlew build
     - name: publish
       run: ./gradlew modrinth
       env:
