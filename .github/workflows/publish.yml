@@ -50,5 +50,8 @@ jobs:
         game_endpoint: minecraft
         relations: fabric-api:requiredDependency
         game_versions: "Minecraft 1.19-Snapshot,Java 17,Fabric"
+        release_type: alpha
         project_id: 628412
         token: ${{ secrets.CURSEFORGE_TOKEN }}
+        changelog: ${{ github.event.release.body }}
+        display_name: ${{ github.event.release.name }}
