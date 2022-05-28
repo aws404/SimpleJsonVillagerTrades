@@ -79,6 +79,7 @@ jar {
 
 modrinth {
 	token = System.getenv("MODRINTH_TOKEN")
+	failSilently = true
 	projectId = project.project_id
 	versionNumber = version
 	versionName = System.getenv("VERSION_NAME") ? System.getenv("VERSION_NAME") : version
