@@ -7,10 +7,10 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.map.MapIcon;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerType;
-import net.minecraft.world.gen.structure.StructureType;
+import net.minecraft.world.gen.structure.Structure;
 
 import java.util.Map;
 
@@ -164,7 +164,7 @@ public interface TradeOffersAccessor {
         int getPrice();
 
         @Accessor
-        TagKey<StructureType> getStructure();
+        TagKey<Structure> getStructure();
 
         @Accessor
         String getNameKey();

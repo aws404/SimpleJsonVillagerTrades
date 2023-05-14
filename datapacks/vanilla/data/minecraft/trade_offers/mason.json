@@ -12,9 +12,9 @@
       {
         "type": "minecraft:sell_item",
         "count": 10,
+        "item": "minecraft:brick",
         "max_uses": 16,
-        "experience": 1,
-        "item": "minecraft:brick"
+        "experience": 1
       }
     ],
     "apprentice": [
@@ -28,9 +28,9 @@
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:chiseled_stone_bricks",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:chiseled_stone_bricks"
+        "experience": 5
       }
     ],
     "journeyman": [
@@ -58,30 +58,30 @@
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:dripstone_block",
         "max_uses": 16,
-        "experience": 10,
-        "item": "minecraft:dripstone_block"
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:polished_andesite",
         "max_uses": 16,
-        "experience": 10,
-        "item": "minecraft:polished_andesite"
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:polished_diorite",
         "max_uses": 16,
-        "experience": 10,
-        "item": "minecraft:polished_diorite"
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:polished_granite",
         "max_uses": 16,
-        "experience": 10,
-        "item": "minecraft:polished_granite"
+        "experience": 10
       }
     ],
     "expert": [
@@ -93,175 +93,175 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:orange_terracotta"
+        "item": "minecraft:orange_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:white_terracotta"
+        "item": "minecraft:white_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:blue_terracotta"
+        "item": "minecraft:blue_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:light_blue_terracotta"
+        "item": "minecraft:light_blue_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:gray_terracotta"
+        "item": "minecraft:gray_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:light_gray_terracotta"
+        "item": "minecraft:light_gray_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:black_terracotta"
+        "item": "minecraft:black_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:red_terracotta"
+        "item": "minecraft:red_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:pink_terracotta"
+        "item": "minecraft:pink_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:magenta_terracotta"
+        "item": "minecraft:magenta_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:lime_terracotta"
+        "item": "minecraft:lime_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:green_terracotta"
+        "item": "minecraft:green_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:cyan_terracotta"
+        "item": "minecraft:cyan_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:purple_terracotta"
+        "item": "minecraft:purple_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:yellow_terracotta"
+        "item": "minecraft:yellow_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:brown_terracotta"
+        "item": "minecraft:brown_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:orange_glazed_terracotta"
+        "item": "minecraft:orange_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:white_glazed_terracotta"
+        "item": "minecraft:white_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:blue_glazed_terracotta"
+        "item": "minecraft:blue_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:light_blue_glazed_terracotta"
+        "item": "minecraft:light_blue_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:gray_glazed_terracotta"
+        "item": "minecraft:gray_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:light_gray_glazed_terracotta"
+        "item": "minecraft:light_gray_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:black_glazed_terracotta"
+        "item": "minecraft:black_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:red_glazed_terracotta"
+        "item": "minecraft:red_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:pink_glazed_terracotta"
+        "item": "minecraft:pink_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:magenta_glazed_terracotta"
+        "item": "minecraft:magenta_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:lime_glazed_terracotta"
+        "item": "minecraft:lime_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:green_glazed_terracotta"
+        "item": "minecraft:green_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:cyan_glazed_terracotta"
+        "item": "minecraft:cyan_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:purple_glazed_terracotta"
+        "item": "minecraft:purple_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:yellow_glazed_terracotta"
+        "item": "minecraft:yellow_glazed_terracotta",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:brown_glazed_terracotta"
+        "item": "minecraft:brown_glazed_terracotta",
+        "experience": 15
       }
     ],
     "master": [
       {
         "type": "minecraft:sell_item",
-        "experience": 30,
-        "item": "minecraft:quartz_pillar"
+        "item": "minecraft:quartz_pillar",
+        "experience": 30
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 30,
-        "item": "minecraft:quartz_block"
+        "item": "minecraft:quartz_block",
+        "experience": 30
       }
     ]
   }

@@ -4,8 +4,8 @@ import com.mojang.serialization.Codec;
 
 import com.github.aws404.sjvt.SimpleJsonVillagerTradesMod;
 
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffers;
 
 import static com.github.aws404.sjvt.SimpleJsonVillagerTradesMod.id;

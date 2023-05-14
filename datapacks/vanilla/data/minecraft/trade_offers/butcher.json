@@ -23,8 +23,8 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 1,
-        "item": "minecraft:rabbit_stew"
+        "item": "minecraft:rabbit_stew",
+        "experience": 1
       }
     ],
     "apprentice": [
@@ -37,16 +37,16 @@
       {
         "type": "minecraft:sell_item",
         "count": 5,
+        "item": "minecraft:cooked_porkchop",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:cooked_porkchop"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 8,
+        "item": "minecraft:cooked_chicken",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:cooked_chicken"
+        "experience": 5
       }
     ],
     "journeyman": [

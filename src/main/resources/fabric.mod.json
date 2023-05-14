@@ -19,6 +19,9 @@
   "entrypoints": {
     "main": [
       "com.github.aws404.sjvt.SimpleJsonVillagerTradesMod"
+    ],
+    "fabric-datagen": [
+      "com.github.aws404.sjvt.datagen.SJVTDataGenerator"
     ]
   },
   "accessWidener": "sjvt.accesswidener",
@@ -28,11 +31,8 @@
 
   "depends": {
     "fabricloader": ">=0.12.12",
-    "fabric": "*",
-    "minecraft": "1.19.x",
+    "fabric": ">=0.80.3",
+    "minecraft": "1.20.x",
     "java": ">=17"
-  },
-  "recommends": {
-    "advanced_runtime_resource_pack": ">=0.5.0"
   }
 }

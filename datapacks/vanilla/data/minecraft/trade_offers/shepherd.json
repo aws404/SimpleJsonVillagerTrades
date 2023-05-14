@@ -29,9 +29,9 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 1,
         "item": "minecraft:shears",
-        "price": 2
+        "price": 2,
+        "experience": 1
       }
     ],
     "apprentice": [
@@ -72,211 +72,211 @@
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:white_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:white_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:orange_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:orange_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:magenta_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:magenta_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:light_blue_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:light_blue_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:yellow_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:yellow_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:lime_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:lime_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:pink_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:pink_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:gray_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:gray_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:light_gray_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:light_gray_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:cyan_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:cyan_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:purple_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:purple_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:blue_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:blue_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:brown_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:brown_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:green_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:green_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:red_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:red_wool"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
+        "item": "minecraft:black_wool",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:black_wool"
-      },
-      {
-        "type": "minecraft:sell_item",
-        "count": 4,
-        "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:white_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:white_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:orange_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:orange_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:magenta_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:magenta_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:light_blue_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:light_blue_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:yellow_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:yellow_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:lime_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:lime_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:pink_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:pink_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:gray_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:gray_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:light_gray_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:light_gray_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:cyan_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:cyan_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:purple_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:purple_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:blue_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:blue_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:brown_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:brown_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:green_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:green_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:red_carpet"
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:red_carpet",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:black_carpet"
+        "experience": 5
+      },
+      {
+        "type": "minecraft:sell_item",
+        "count": 4,
+        "item": "minecraft:black_carpet",
+        "max_uses": 16,
+        "experience": 5
       }
     ],
     "journeyman": [
@@ -317,99 +317,99 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:white_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:yellow_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:red_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:black_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:blue_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:brown_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:cyan_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:gray_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:green_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:light_blue_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:light_gray_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:lime_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:magenta_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:orange_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:pink_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:purple_bed",
-        "price": 3
+        "price": 3,
+        "experience": 10
       }
     ],
     "expert": [
@@ -457,108 +457,108 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:white_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:blue_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:light_blue_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:red_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:pink_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:green_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:lime_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:gray_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:black_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:purple_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:magenta_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:cyan_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:brown_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:yellow_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:orange_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:light_gray_banner",
-        "price": 3
+        "price": 3,
+        "experience": 15
       }
     ],
     "master": [
       {
         "type": "minecraft:sell_item",
         "count": 3,
-        "experience": 30,
         "item": "minecraft:painting",
-        "price": 2
+        "price": 2,
+        "experience": 30
       }
     ]
   }

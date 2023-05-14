@@ -17,12 +17,12 @@ import com.github.aws404.sjvt.trade_offers.TradeOfferFactoryType;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.registry.Registries;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.profiler.Profiler;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
 
@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class TradeOfferManager extends JsonDataLoader implements IdentifiableResourceReloadListener {
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    public static final Identifier WANDERING_TRADER_PROFESSION_ID = Registry.ENTITY_TYPE.getId(EntityType.WANDERING_TRADER);
+    public static final Identifier WANDERING_TRADER_PROFESSION_ID = Registries.ENTITY_TYPE.getId(EntityType.WANDERING_TRADER);
     private static final Identifier ID = SimpleJsonVillagerTradesMod.id("trade_offers");
 
     private Map<Identifier, Int2ObjectMap<TradeOffers.Factory[]>> offerFactories = Map.of();
@@ -73,7 +73,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
     }
 
     public Optional<Int2ObjectMap<TradeOffers.Factory[]>> getVillagerOffers(VillagerProfession profession) {
-        return Optional.ofNullable(offerFactories.get(Registry.VILLAGER_PROFESSION.getId(profession)));
+        return Optional.ofNullable(offerFactories.get(Registries.VILLAGER_PROFESSION.getId(profession)));
     }
 
     public Optional<TradeOffers.Factory[]> getWanderingTraderOffers(int rarity) {
@@ -129,7 +129,7 @@ public class TradeOfferManager extends JsonDataLoader implements IdentifiableRes
                 }
             }
 
-            return DataResult.error("Invalid level index " + id + " provided.");
+            return DataResult.error(() -> "Invalid level index " + id + " provided.");
         }
 
         @Override

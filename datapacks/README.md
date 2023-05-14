@@ -4,4 +4,5 @@ If a pack requests TK (Translation Keys), it also needs to be installed as a res
 
 | Pack Name | Description | Req. TK |
 | --------- | ----------- | ------- |
+| vanilla | An example of the default trades in Minecraft. | no |
 | super_cartographers | Adds explorer maps for many vanilla structures to the cartographers trade pool, including mineshafts, igloos, pyramid and neighbouring villages. | yes |

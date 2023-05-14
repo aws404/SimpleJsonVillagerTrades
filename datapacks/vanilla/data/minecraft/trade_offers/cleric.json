@@ -12,8 +12,8 @@
       {
         "type": "minecraft:sell_item",
         "count": 2,
-        "experience": 1,
-        "item": "minecraft:redstone"
+        "item": "minecraft:redstone",
+        "experience": 1
       }
     ],
     "apprentice": [
@@ -25,8 +25,8 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 5,
-        "item": "minecraft:lapis_lazuli"
+        "item": "minecraft:lapis_lazuli",
+        "experience": 5
       }
     ],
     "journeyman": [
@@ -38,9 +38,9 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:glowstone",
-        "price": 4
+        "price": 4,
+        "experience": 10
       }
     ],
     "expert": [
@@ -58,9 +58,9 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
         "item": "minecraft:ender_pearl",
-        "price": 5
+        "price": 5,
+        "experience": 15
       }
     ],
     "master": [
@@ -72,9 +72,9 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 30,
         "item": "minecraft:experience_bottle",
-        "price": 3
+        "price": 3,
+        "experience": 30
       }
     ]
   }

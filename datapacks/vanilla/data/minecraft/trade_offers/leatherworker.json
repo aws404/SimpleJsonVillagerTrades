@@ -73,9 +73,9 @@
     "master": [
       {
         "type": "minecraft:sell_item",
-        "experience": 30,
         "item": "minecraft:saddle",
-        "price": 6
+        "price": 6,
+        "experience": 30
       },
       {
         "type": "minecraft:sell_dyed_armor",

@@ -25,7 +25,7 @@ public record DefaultMapCodec<K, V>(Codec<K> keyCodec, Codec<V> valueCodec, Keya
             value.error().ifPresent(vPartialResult -> {
                 // Make the DataResult partial (error) if it was not
                 if (result.get().error().isEmpty()) {
-                    result.set(result.get().flatMap(kvMap -> DataResult.error("", kvMap)));
+                    result.set(result.get().flatMap(kvMap -> DataResult.error(() -> "", kvMap)));
                 }
 
                 result.set(result.get().mapError(s -> s + " " + vPartialResult.message()));
@@ -46,7 +46,7 @@ public record DefaultMapCodec<K, V>(Codec<K> keyCodec, Codec<V> valueCodec, Keya
         if (encodedValue == null) {
             final T encodedDefaultValue = input.get(DEFAULT_VALUE_KEY);
             if (encodedDefaultValue == null) {
-                return DataResult.error("Missing value for key " + key + " and no default defined");
+                return DataResult.error(() -> "Missing value for key " + key + " and no default defined");
             }
             return elementCodec().decode(ops, encodedDefaultValue).map(Pair::getFirst);
         }

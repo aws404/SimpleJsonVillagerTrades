@@ -12,16 +12,16 @@
       {
         "type": "minecraft:sell_item",
         "count": 16,
-        "experience": 1,
-        "item": "minecraft:arrow"
+        "item": "minecraft:arrow",
+        "experience": 1
       },
       {
         "type": "minecraft:process_item",
         "sell_item": "minecraft:flint",
         "sell_count": 10,
-        "experience": 1,
         "item": "minecraft:gravel",
-        "second_count": 10
+        "second_count": 10,
+        "experience": 1
       }
     ],
     "apprentice": [
@@ -33,9 +33,9 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 5,
         "item": "minecraft:bow",
-        "price": 2
+        "price": 2,
+        "experience": 5
       }
     ],
     "journeyman": [
@@ -48,9 +48,9 @@
       },
       {
         "type": "minecraft:sell_item",
-        "experience": 10,
         "item": "minecraft:crossbow",
-        "price": 3
+        "price": 3,
+        "experience": 10
       }
     ],
     "expert": [
@@ -63,10 +63,10 @@
       },
       {
         "type": "minecraft:sell_enchanted_tool",
-        "max_uses": 3,
-        "experience": 15,
         "item": "minecraft:bow",
-        "base_price": 2
+        "base_price": 2,
+        "max_uses": 3,
+        "experience": 15
       }
     ],
     "master": [
@@ -78,17 +78,17 @@
       },
       {
         "type": "minecraft:sell_enchanted_tool",
-        "max_uses": 3,
-        "experience": 15,
         "item": "minecraft:crossbow",
-        "base_price": 3
+        "base_price": 3,
+        "max_uses": 3,
+        "experience": 15
       },
       {
         "type": "minecraft:sell_potion_holding_item",
         "price": 2,
         "sell_count": 5,
-        "experience": 30,
-        "second_count": 5
+        "second_count": 5,
+        "experience": 30
       }
     ]
   }

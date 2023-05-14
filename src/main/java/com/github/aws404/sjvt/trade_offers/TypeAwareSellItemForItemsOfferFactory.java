@@ -9,8 +9,8 @@ import com.github.aws404.sjvt.api.SerializableTradeOfferFactory;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerDataContainer;
 import net.minecraft.village.VillagerType;
@@ -34,8 +34,8 @@ public class TypeAwareSellItemForItemsOfferFactory implements SerializableTradeO
     public final int experience;
 
     public TypeAwareSellItemForItemsOfferFactory(Map<VillagerType, ItemStack> buyMap1, Optional<Map<VillagerType, ItemStack>> buyMap2, Map<VillagerType, ItemStack> sellMap, int maxUses, int experience) {
-        Registry.VILLAGER_TYPE.stream().filter((villagerType) -> !buyMap1.containsKey(villagerType) || (buyMap2.isPresent() && !buyMap2.get().containsKey(villagerType)) || !sellMap.containsKey(villagerType)).findAny().ifPresent((villagerType) -> {
-            throw new IllegalStateException("Missing trade for villager type: " + Registry.VILLAGER_TYPE.getId(villagerType));
+        Registries.VILLAGER_TYPE.stream().filter((villagerType) -> !buyMap1.containsKey(villagerType) || (buyMap2.isPresent() && !buyMap2.get().containsKey(villagerType)) || !sellMap.containsKey(villagerType)).findAny().ifPresent((villagerType) -> {
+            throw new IllegalStateException("Missing trade for villager type: " + Registries.VILLAGER_TYPE.getId(villagerType));
         });
         this.buyMap1 = buyMap1;
         this.buyMap2 = buyMap2.orElse(null);

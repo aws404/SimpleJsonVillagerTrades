@@ -30,9 +30,9 @@
       {
         "type": "minecraft:sell_item",
         "count": 6,
+        "item": "minecraft:bread",
         "max_uses": 16,
-        "experience": 1,
-        "item": "minecraft:bread"
+        "experience": 1
       }
     ],
     "apprentice": [
@@ -45,24 +45,24 @@
       {
         "type": "minecraft:sell_item",
         "count": 4,
-        "experience": 5,
-        "item": "minecraft:pumpkin_pie"
+        "item": "minecraft:pumpkin_pie",
+        "experience": 5
       },
       {
         "type": "minecraft:sell_item",
         "count": 4,
+        "item": "minecraft:apple",
         "max_uses": 16,
-        "experience": 5,
-        "item": "minecraft:apple"
+        "experience": 5
       }
     ],
     "journeyman": [
       {
         "type": "minecraft:sell_item",
         "count": 18,
-        "experience": 10,
         "item": "minecraft:cookie",
-        "price": 3
+        "price": 3,
+        "experience": 10
       },
       {
         "type": "minecraft:buy_for_one_emerald",
@@ -74,8 +74,8 @@
     "expert": [
       {
         "type": "minecraft:sell_item",
-        "experience": 15,
-        "item": "minecraft:cake"
+        "item": "minecraft:cake",
+        "experience": 15
       },
       {
         "type": "minecraft:sell_suspicious_stew",
@@ -118,16 +118,16 @@
       {
         "type": "minecraft:sell_item",
         "count": 3,
-        "experience": 30,
         "item": "minecraft:golden_carrot",
-        "price": 3
+        "price": 3,
+        "experience": 30
       },
       {
         "type": "minecraft:sell_item",
         "count": 3,
-        "experience": 30,
         "item": "minecraft:glistering_melon_slice",
-        "price": 4
+        "price": 4,
+        "experience": 30
       }
     ]
   }
