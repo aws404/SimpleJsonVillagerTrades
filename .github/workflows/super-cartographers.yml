@@ -22,10 +22,10 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
+      - name: install zip
+        uses:  montudor/action-zip@v1
       - name: zip datapack
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r super_cartographers.${{ github.sha }}.zip . -i *
+        run: zip -qq -r super_cartographers.${{ github.sha }}.zip . -i *
 
       - name: capture build artifacts
         uses: actions/upload-artifact@v2
