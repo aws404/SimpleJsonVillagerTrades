@@ -23,7 +23,7 @@ jobs:
         uses:  montudor/action-zip@v1
       - name: zip datapack
         working-directory: datapacks/super_cartographers
-        run: zip -qq -r super_cartographers.${{ github.sha }}.zip . -i *
+        run: zip -qq -r super_cartographers.${{ github.sha }}.zip pack.mcmeta data
       - name: capture build artifacts
         uses: actions/upload-artifact@v2
         with:
