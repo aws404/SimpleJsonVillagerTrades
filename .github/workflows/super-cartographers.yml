@@ -8,6 +8,7 @@ on:
   push:
     paths:
     - 'datapacks/super_cartographers/**/*'
+  workflow_dispatch:
 
 jobs:
   build:
