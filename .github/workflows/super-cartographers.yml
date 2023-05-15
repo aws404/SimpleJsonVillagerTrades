@@ -1,0 +1,27 @@
+# Automatically build the project and run any configured tests for every push
+# and submitted pull request. This can help catch issues that only occur on
+# certain platforms or Java versions, and provides a first line of defence
+# against bad commits.
+
+name: build
+on: [pull_request, push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      - name: zip datapack
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r datapacks/super_cartographers.${{ github.sha }}.zip datapacks/super_cartographers
+
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Artifacts
+          path: datapacks/super_cartographers.${{ github.sha }}.zip
