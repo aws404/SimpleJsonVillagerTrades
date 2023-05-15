@@ -5,10 +5,10 @@
 
 name: build super_cartographers
 on: 
+  workflow_dispatch:
   push:
     paths:
     - 'datapacks/super_cartographers/**/*'
-  workflow_dispatch:
 
 jobs:
   build:
