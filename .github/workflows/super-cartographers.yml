@@ -25,7 +25,7 @@ jobs:
       - name: zip datapack
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r super_cartographers.${{ github.sha }}.zip *
+          args: zip -qq -r super_cartographers.${{ github.sha }}.zip . -i *
 
       - name: capture build artifacts
         uses: actions/upload-artifact@v2
