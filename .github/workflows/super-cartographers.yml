@@ -4,7 +4,10 @@
 # against bad commits.
 
 name: build super_cartographers
-on: [pull_request, push]
+on: 
+  push:
+    paths:
+    - 'datapacks/super_cartographers/**/*'
 
 jobs:
   build:
@@ -12,17 +15,19 @@ jobs:
       matrix:
         os: [ubuntu-20.04]
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: datapacks/super_cartographers
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
-      - name: Install zip
-        uses: montudor/action-zip@v1
       - name: zip datapack
-        working-directory: datapacks/super_cartographers
-        run: zip -qq -r datapacks/super_cartographers.${{ github.sha }}.zip *
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r super_cartographers.${{ github.sha }}.zip *
 
       - name: capture build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
-          path: datapacks/super_cartographers.${{ github.sha }}.zip
+          path: super_cartographers.${{ github.sha }}.zip
