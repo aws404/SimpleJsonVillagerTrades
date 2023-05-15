@@ -29,10 +29,3 @@ jobs:
         with:
           name: Artifacts
           path: datapacks/super_cartographers/super_cartographers.${{ github.sha }}.zip
-      - uses: Kir-Antipov/mc-publish@v3.2
-        with:
-          modrinth-id: super-cartographers
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          files-primary: datapacks/super_cartographers/super_cartographers.${{ github.sha }}.zip
-          loaders: datapack
-          dependencies: sjvt | depends | *
